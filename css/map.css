@@ -163,7 +163,7 @@ button,a{touch-action:manipulation}
 
 /* Always-visible clean-mode switch */
 .ui-toggle{
-  position:absolute;right:78px;top:18px;z-index:80;height:44px;
+  position:absolute;right:18px;top:158px;z-index:80;height:44px;
   border:1px solid rgba(255,255,255,.15);border-radius:10px;
   background:rgba(7,17,31,.90);color:#fff;padding:0 12px;
   display:flex;align-items:center;gap:7px;font-size:10px;font-weight:800;
@@ -178,7 +178,7 @@ button,a{touch-action:manipulation}
 .map-shell.ui-hidden .ui-toggle span{font-size:0}
 .map-shell.ui-hidden .ui-toggle span::after{font-size:10px}
 @media(max-width:900px){
-  .ui-toggle{right:62px;top:10px;height:40px;padding:0 10px}
+  .ui-toggle{right:10px;top:165px;height:40px;padding:0 10px}
   .ui-toggle span{display:none}
   .map-shell.ui-hidden .ui-toggle{right:10px;top:10px}
 }
