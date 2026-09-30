@@ -201,3 +201,9 @@ button,a{touch-action:manipulation}
   pointer-events:none !important;
   visibility:hidden !important;
 }
+
+.floating-search.navigator-hidden{
+  opacity:0 !important;
+  visibility:hidden !important;
+  pointer-events:none !important;
+}
