@@ -276,6 +276,19 @@
   $('#zoomIn').addEventListener('click',()=>{const r=viewport.getBoundingClientRect();zoomAt(state.scale*1.25,r.left+r.width/2,r.top+r.height/2)});
   $('#zoomOut').addEventListener('click',()=>{const r=viewport.getBoundingClientRect();zoomAt(state.scale*.8,r.left+r.width/2,r.top+r.height/2)});
   $('#resetView').addEventListener('click',resetView);
+
+  // Full-screen clean mode: hide all navigator UI, then restore it with one button.
+  const mapShell = $('#mapShell');
+  const toggleUI = $('#toggleUI');
+  const showUI = $('#showUI');
+  function setUIHidden(hidden){
+    mapShell.classList.toggle('ui-hidden', hidden);
+    toggleUI?.setAttribute('aria-label', hidden ? 'Show navigation' : 'Hide navigation');
+    toggleUI?.setAttribute('title', hidden ? 'Show navigation' : 'Hide navigation');
+    if(!hidden) $('#mapTools')?.focus?.();
+  }
+  toggleUI?.addEventListener('click',()=>setUIHidden(true));
+  showUI?.addEventListener('click',()=>setUIHidden(false));
   $('#fitSelected').addEventListener('click',()=>{if(!state.selected){openDirectory();return}focusSelected();openDetailsPanel()});
   $('#routeToggle').addEventListener('click',()=>{if(!state.selected){openDirectory();return}toggleRoute()});
   $('#fullscreen').addEventListener('click',()=>{if(!document.fullscreenElement)document.documentElement.requestFullscreen?.();else document.exitFullscreen?.()});
