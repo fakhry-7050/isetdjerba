@@ -203,7 +203,7 @@ button,a{touch-action:manipulation}
   pointer-events:none !important;
   visibility:hidden !important;
 }
-.directory.navigator-hidden + .ui-toggle{
+.ui-toggle.nav-hidden{
   left:18px !important;
   top:158px !important;
   background:#102238 !important;
@@ -218,12 +218,12 @@ button,a{touch-action:manipulation}
     min-width:76px !important;
     height:38px !important;
   }
-  .directory.navigator-hidden + .ui-toggle{
+  .ui-toggle.nav-hidden{
     left:10px !important;
     top:10px !important;
   }
 }
 @media(max-width:520px){
   .ui-toggle{left:calc(100vw - 96px) !important;top:10px !important}
-  .directory.navigator-hidden + .ui-toggle{left:9px !important;top:10px !important}
+  .ui-toggle.nav-hidden{left:9px !important;top:10px !important}
 }
