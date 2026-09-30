@@ -159,3 +159,26 @@ button,a{touch-action:manipulation}
 @media(max-width:520px){
   .show-ui{right:9px;bottom:73px}
 }
+
+
+/* Always-visible clean-mode switch */
+.ui-toggle{
+  position:absolute;right:78px;top:18px;z-index:80;height:44px;
+  border:1px solid rgba(255,255,255,.15);border-radius:10px;
+  background:rgba(7,17,31,.90);color:#fff;padding:0 12px;
+  display:flex;align-items:center;gap:7px;font-size:10px;font-weight:800;
+  cursor:pointer;box-shadow:0 8px 22px rgba(0,0,0,.22);
+}
+.ui-toggle:hover{background:#142238}
+.map-shell.ui-hidden .ui-toggle{
+  right:18px;top:18px;background:rgba(7,17,31,.96);
+  border-color:rgba(165,255,63,.35);color:var(--green);
+}
+.map-shell.ui-hidden .ui-toggle span::after{content:"Show UI"}
+.map-shell.ui-hidden .ui-toggle span{font-size:0}
+.map-shell.ui-hidden .ui-toggle span::after{font-size:10px}
+@media(max-width:900px){
+  .ui-toggle{right:62px;top:10px;height:40px;padding:0 10px}
+  .ui-toggle span{display:none}
+  .map-shell.ui-hidden .ui-toggle{right:10px;top:10px}
+}
