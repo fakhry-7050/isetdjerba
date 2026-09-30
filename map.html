@@ -49,6 +49,8 @@
           <div class="live-status"><i></i><span id="statusText">Loading campus data…</span></div>
         </div>
 
+        <button id="showUI" class="show-ui" type="button" title="Show navigation" aria-label="Show navigation">☰ <span>Show UI</span></button>
+
         <button id="openDirectory" class="floating-search" type="button">
           <span>⌕</span><strong>Find a place</strong><small>Ctrl K</small>
         </button>
@@ -59,11 +61,12 @@
           <button id="resetView" type="button" aria-label="Fit map">↻</button>
         </div>
 
-        <div class="map-tools">
+        <div class="map-tools" id="mapTools">
           <button id="fitSelected" type="button" title="Focus selected">⌖ <span>Focus</span></button>
           <button id="routeToggle" type="button" title="Show route">➜ <span>Route</span></button>
           <button id="fullscreen" type="button" title="Fullscreen">⛶ <span>Full</span></button>
           <button id="helpBtn" type="button" title="How to use">?</button>
+          <button id="toggleUI" type="button" title="Hide navigation" aria-label="Hide navigation">◐ <span>Hide UI</span></button>
         </div>
 
         <div class="map-hint">Drag · Wheel / pinch · Double-click to zoom</div>
