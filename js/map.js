@@ -282,9 +282,8 @@
   const toggleUI = $('#toggleUI');
   function setNavigatorHidden(hidden){
     directory?.classList.toggle('navigator-hidden', hidden);
-    toggleUI?.classList.toggle('nav-hidden', hidden);
     if(toggleUI){
-      toggleUI.textContent = hidden ? '☰ SHOW NAV' : '☰ HIDE NAV';
+      toggleUI.textContent = hidden ? '☰' : '☰';
       toggleUI.setAttribute('aria-label', hidden ? 'Show Campus Navigator' : 'Hide Campus Navigator');
       toggleUI.setAttribute('title', hidden ? 'Show Campus Navigator' : 'Hide Campus Navigator');
     }
