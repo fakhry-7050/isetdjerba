@@ -132,3 +132,30 @@ button,a{touch-action:manipulation}
   .map-tools{gap:5px}
   .map-tools button{min-width:40px;padding:0 9px}
 }
+
+
+/* Full-map UI visibility control */
+.map-shell.ui-hidden .map-brand,
+.map-shell.ui-hidden .floating-search,
+.map-shell.ui-hidden .map-controls,
+.map-shell.ui-hidden .map-tools,
+.map-shell.ui-hidden .map-hint,
+.map-shell.ui-hidden .map-footer,
+.map-shell.ui-hidden .directory,
+.map-shell.ui-hidden .details,
+.map-shell.ui-hidden .mobile-bar{opacity:0;pointer-events:none;visibility:hidden}
+.show-ui{
+  position:absolute;right:18px;bottom:18px;z-index:120;
+  height:42px;border:1px solid rgba(255,255,255,.18);
+  background:rgba(7,17,31,.92);color:#fff;border-radius:10px;
+  padding:0 13px;font-size:10px;font-weight:800;cursor:pointer;
+  box-shadow:0 8px 24px rgba(0,0,0,.25);display:none;
+}
+.map-shell.ui-hidden .show-ui{display:inline-flex;align-items:center;gap:7px;opacity:1;pointer-events:auto;visibility:visible}
+@media(max-width:900px){
+  .show-ui{right:10px;bottom:73px;height:42px;padding:0 12px}
+  .map-shell.ui-hidden .show-ui{display:flex}
+}
+@media(max-width:520px){
+  .show-ui{right:9px;bottom:73px}
+}
