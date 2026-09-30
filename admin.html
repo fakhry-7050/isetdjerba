@@ -16,7 +16,7 @@
   <section id="loginView" class="admin-login">
     <p class="eyebrow"><span></span> PRIVATE CONTROL ROOM</p><h1>Manage the campus map.</h1><p>Update marker positions, descriptions and route settings for the public navigator.</p>
     <form id="loginForm" class="admin-login-form"><label>Username<input id="loginUser" autocomplete="username" required></label><label>Password<input id="loginPass" type="password" autocomplete="current-password" required></label><button class="btn-primary" type="submit">Enter admin console ↗</button><small id="loginError" class="admin-error"></small></form>
-    <small class="admin-note">Admin credentials: <b>admin</b> / <b>iset2026</b>. Frontend-only login is not real server security.</small>
+   
   </section>
   <section id="adminView" class="admin-console" hidden>
     <div class="admin-heading"><div><p class="eyebrow"><span></span> CAMPUS DATA MANAGEMENT</p><h1>Map control room.</h1><p>Edit places once and publish them to the navigator and challenge.</p></div><div class="admin-actions"><label style="display:flex;align-items:center;gap:7px;font:800 8px DM Mono;color:#718092;">SYNC PASSWORD <input id="syncPassword" type="password" value="iset2026" style="width:120px;padding:8px;border:1px solid #ccd2d3;border-radius:6px;"></label><span id="syncStatus" style="font:800 8px DM Mono;color:#5cae68;"></span><button id="exportLiveJson" class="btn-secondary" type="button">Export live JSON</button><button id="exportButton" class="btn-secondary" type="button">Export backup</button><button id="resetButton" class="danger-button" type="button">Reset defaults</button></div></div>
