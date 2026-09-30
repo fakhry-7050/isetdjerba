@@ -278,18 +278,18 @@
   $('#resetView').addEventListener('click',resetView);
 
   // One control toggles only the Campus Navigator directory.
-  const mapShell = $('#mapShell');
+  const directory = $('#directory');
   const toggleUI = $('#toggleUI');
   function setNavigatorHidden(hidden){
-    mapShell.classList.toggle('navigator-hidden', hidden);
+    directory?.classList.toggle('navigator-hidden', hidden);
     if(toggleUI){
-      toggleUI.textContent = hidden ? '☰ SHOW NAV' : '☰ NAV';
+      toggleUI.textContent = hidden ? '☰ SHOW NAV' : '☰ HIDE NAV';
       toggleUI.setAttribute('aria-label', hidden ? 'Show Campus Navigator' : 'Hide Campus Navigator');
       toggleUI.setAttribute('title', hidden ? 'Show Campus Navigator' : 'Hide Campus Navigator');
     }
   }
   toggleUI?.addEventListener('click',()=>{
-    setNavigatorHidden(!mapShell.classList.contains('navigator-hidden'));
+    setNavigatorHidden(!directory?.classList.contains('navigator-hidden'));
   });
 
   $('#fitSelected').addEventListener('click',()=>{if(!state.selected){openDirectory();return}focusSelected();openDetailsPanel()});
