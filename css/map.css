@@ -19,10 +19,10 @@ button,a{touch-action:manipulation}
 .map-canvas img{position:absolute;inset:0;width:100%;height:100%;display:block;user-select:none;pointer-events:none;-webkit-user-drag:none}
 .map-overlay{position:absolute;inset:0;width:100%;height:100%;overflow:visible;pointer-events:none}
 #markers{position:absolute;inset:0;z-index:10}
-.marker{position:absolute;transform:translate(-50%,-100%);width:42px;height:48px;border:0;background:none;padding:0;cursor:pointer;filter:drop-shadow(0 5px 7px rgba(0,0,0,.32));transition:transform .16s ease,filter .16s ease;z-index:5;touch-action:manipulation}
-.marker:before{content:"";position:absolute;left:4px;top:0;width:34px;height:34px;border-radius:50% 50% 50% 0;background:var(--orange);transform:rotate(-45deg)}
-.marker span{position:absolute;left:0;right:0;top:8px;color:#fff;font:800 9px ui-monospace,SFMono-Regular,Menlo,monospace;text-align:center;z-index:1}
-.marker:hover,.marker.selected{transform:translate(-50%,-100%) scale(1.13);z-index:40}
+.marker{position:absolute;transform:translate(-50%,-100%);width:42px;height:48px;border:0;background:none;padding:0;cursor:pointer;filter:drop-shadow(0 4px 6px rgba(0,0,0,.28));transition:transform .16s ease,filter .16s ease;z-index:5;touch-action:manipulation}
+.marker:before{content:"";position:absolute;left:8px;top:2px;width:26px;height:26px;border-radius:50% 50% 50% 0;background:var(--orange);transform:rotate(-45deg)}
+.marker span{position:absolute;left:3px;right:3px;top:8px;color:#fff;font:800 8px ui-monospace,SFMono-Regular,Menlo,monospace;text-align:center;z-index:1}
+.marker:hover,.marker.selected{transform:translate(-50%,-100%) scale(1.08);z-index:40}
 .marker.selected:before{background:var(--blue)}
 .marker.selected{filter:drop-shadow(0 8px 12px rgba(0,0,0,.45))}
 .route-line,.route-glow{fill:none;stroke-linecap:round;stroke-linejoin:round;vector-effect:non-scaling-stroke;opacity:0}
@@ -119,6 +119,16 @@ button,a{touch-action:manipulation}
   .map-footer{bottom:70px}.footer-actions a{display:none}
   .directory{width:calc(100vw - 18px);left:9px;top:9px;bottom:9px}
   .details{bottom:73px;max-height:50vh}.details .detail-actions{flex-wrap:wrap}.details .detail-actions button{flex:1}
-  .marker{width:36px;height:41px}.marker:before{width:29px;height:29px}.marker span{top:7px;font-size:8px}
+  .marker{width:42px;height:48px}.marker:before{left:10px;top:3px;width:22px;height:22px}.marker span{left:5px;right:5px;top:8px;font-size:7px}
 }
 @media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;animation:none!important;transition:none!important}}
+
+
+/* Mobile map polish: keep the plan readable while preserving generous touch targets. */
+@media(max-width:520px){
+  .map-canvas{width:min(98vw, calc(100svh * .52 * 1.4133885438233265));}
+  .map-footer{background:rgba(7,17,31,.94);padding:7px 8px 7px 10px;min-height:43px}
+  .map-footer strong{font-size:10px}.map-footer span{font-size:8px}
+  .map-tools{gap:5px}
+  .map-tools button{min-width:40px;padding:0 9px}
+}
