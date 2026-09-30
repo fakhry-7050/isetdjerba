@@ -197,13 +197,13 @@ button,a{touch-action:manipulation}
   cursor:pointer !important;
   box-shadow:0 7px 18px rgba(0,0,0,.28) !important;
 }
-.map-shell.navigator-hidden .directory{
+.directory.navigator-hidden{
   transform:translateX(calc(-100% - 30px)) !important;
   opacity:0 !important;
   pointer-events:none !important;
   visibility:hidden !important;
 }
-.map-shell.navigator-hidden .ui-toggle{
+.directory.navigator-hidden + .ui-toggle{
   left:18px !important;
   top:158px !important;
   background:#102238 !important;
@@ -218,12 +218,12 @@ button,a{touch-action:manipulation}
     min-width:76px !important;
     height:38px !important;
   }
-  .map-shell.navigator-hidden .ui-toggle{
+  .directory.navigator-hidden + .ui-toggle{
     left:10px !important;
     top:10px !important;
   }
 }
 @media(max-width:520px){
   .ui-toggle{left:calc(100vw - 96px) !important;top:10px !important}
-  .map-shell.navigator-hidden .ui-toggle{left:9px !important;top:10px !important}
+  .directory.navigator-hidden + .ui-toggle{left:9px !important;top:10px !important}
 }
