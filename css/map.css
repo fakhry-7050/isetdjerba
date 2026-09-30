@@ -157,19 +157,12 @@ button,a{touch-action:manipulation}
   box-shadow:0 8px 22px rgba(0,0,0,.25) !important;
 }
 .ui-toggle:hover{background:#15283f !important}
-.map-shell.navigator-hidden .directory{
-  transform:translateX(calc(-100% - 30px));
-  opacity:0;
-  pointer-events:none;
-  visibility:hidden;
-}
 .map-shell.navigator-hidden .ui-toggle{
   background:#102238 !important;
   border-color:rgba(165,255,63,.45) !important;
 }
 @media(max-width:900px){
   .ui-toggle{left:10px !important;top:116px !important;height:38px !important}
-  .map-shell.navigator-hidden .directory{transform:translateX(calc(-100% - 30px))}
 }
 @media(max-width:520px){
   .ui-toggle{left:9px !important;top:111px !important;min-width:78px !important}
