@@ -1,0 +1,1 @@
+Route visibility fix: ID selectors previously overrode .visible opacity, so route lines were hidden while waypoint dots remained visible. Explicit #route*.visible rules now force the route glow/line/flow visible. Start halo is now subtle and stable.

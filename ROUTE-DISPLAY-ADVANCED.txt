@@ -1,0 +1,18 @@
+ROUTE DISPLAY — ADVANCED FIX
+
+- Fixed the route renderer crash caused by routesByLocation scope.
+- Saved per-marker routes are now read directly from iset-routes-by-location.
+- Route is automatically shown when the selected marker has a saved route.
+- Added smooth curved route rendering instead of hard corner-only lines.
+- Added high-contrast route layers: dark glow + white base + animated lime flow.
+- Added directional arrow markers along the route.
+- Added route waypoints and destination pulse.
+- Added animated START beacon and LIVE ROUTE destination badge.
+- Route line keeps a readable screen thickness while zooming.
+- Existing map data, markers, routesByLocation and Netlify shared-data architecture are preserved.
+
+Deployment:
+1. Deploy this ZIP/site to Netlify.
+2. Hard refresh the public site with Ctrl+Shift+R.
+3. Select a marker that has a saved route; the route should appear automatically.
+4. The Show/Hide route button remains available for manual control.

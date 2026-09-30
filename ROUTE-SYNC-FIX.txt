@@ -1,0 +1,10 @@
+ROUTE SYNC FIX
+
+This build fixes the admin publishing bug:
+- Save place now syncs to /api/campus-data.
+- Save route syncs routesByLocation to Netlify Blobs.
+- Save route start syncs routeSettings.
+- Delete syncs to the server.
+- Admin loads live server data when opened.
+
+Deploy this ZIP to Netlify. Then hard refresh with Ctrl+Shift+R.

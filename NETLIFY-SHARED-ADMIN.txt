@@ -1,0 +1,31 @@
+ISET DJERBA — SHARED JSON + NETLIFY DATA
+
+DATA ARCHITECTURE
+1. data/campus-data.json
+   - Portable backup/initial data.
+   - Contains ALL locations, route points and route settings.
+   - Can be copied with the project to another hosting.
+
+2. Netlify Blobs
+   - Live shared JSON state for the deployed site.
+   - Every Admin save sends the complete campus JSON to /api/campus-data.
+   - All visitors read the same live JSON state.
+
+3. Admin panel
+   - Marker add/edit/move/delete => saved to live JSON.
+   - Route start => saved to live JSON.
+   - Route points => saved to live JSON.
+   - "Export live JSON" downloads the exact current data as:
+     iset-djerba-campus-data.json
+
+IMPORTANT:
+A deployed website cannot directly rewrite a file inside the Git/project folder
+just because JavaScript changes it in the browser. Therefore the live JSON is
+stored server-side (Netlify Blobs), while data/campus-data.json is the portable
+project backup/seed. This gives you both global live persistence and portability.
+
+When moving to another host:
+- Copy the whole project.
+- Keep data/campus-data.json.
+- If the new host does not support Netlify Blobs, connect the same API/database
+  concept there, or import the exported iset-djerba-campus-data.json.

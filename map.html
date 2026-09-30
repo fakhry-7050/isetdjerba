@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#07111f">
+<title>ISET Djerba — Campus Map</title>
+<link rel="stylesheet" href="css/map.css">
+<script src="js/jsonbin-config.js"></script>
+</head>
+<body>
+<div class="navigator" id="navigator">
+  <main class="layout">
+    <section class="map-panel" aria-label="Interactive ISET Djerba campus map">
+      <div class="map-shell" id="mapShell">
+        <div class="map-viewport" id="viewport">
+          <div class="map-canvas" id="canvas">
+            <img src="assets/iset-djerba-map.webp" alt="Official ISET Djerba ground-floor plan" draggable="false">
+            <svg class="map-overlay" id="overlay" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
+              <defs>
+                <filter id="routeGlow" x="-50%" y="-50%" width="200%" height="200%">
+                  <feGaussianBlur stdDeviation="0.65"></feGaussianBlur>
+                </filter>
+                <linearGradient id="routeGrad" x1="0" y1="0" x2="1" y2="1">
+                  <stop offset="0" stop-color="#74ff76"/>
+                  <stop offset="1" stop-color="#b8ff3d"/>
+                </linearGradient>
+                <marker id="routeArrow" viewBox="0 0 10 10" refX="7.5" refY="5" markerWidth="4.8" markerHeight="4.8" orient="auto-start-reverse">
+                  <path d="M 0 0 L 10 5 L 0 10 z" fill="#b8ff3d"></path>
+                </marker>
+              </defs>
+              <path id="routeGlow" class="route-glow" d=""></path>
+              <path id="routeLine" class="route-line" d=""></path>
+              <g id="routeArrows"></g>
+              <g id="routeDots"></g>
+              <circle id="startDot" class="start-dot" r="1.25" cx="0" cy="0"></circle>
+              <circle id="destinationHalo" class="destination-halo" r="2.2" cx="0" cy="0"></circle>
+            </svg>
+            <div id="markers"></div>
+            <div class="start-label" id="startLabel">START</div>
+          </div>
+        </div>
+
+        <div class="map-brand">
+          <div>
+            <p class="eyebrow">ISET DJERBA · CAMPUS NAVIGATOR</p>
+            <h1>Ground-floor plan <span>RDC</span></h1>
+          </div>
+          <div class="live-status"><i></i><span id="statusText">Loading campus data…</span></div>
+        </div>
+
+        <button id="openDirectory" class="floating-search" type="button">
+          <span>⌕</span><strong>Find a place</strong><small>Ctrl K</small>
+        </button>
+
+        <div class="map-controls" aria-label="Map controls">
+          <button id="zoomIn" type="button" aria-label="Zoom in">+</button>
+          <button id="zoomOut" type="button" aria-label="Zoom out">−</button>
+          <button id="resetView" type="button" aria-label="Fit map">↻</button>
+        </div>
+
+        <div class="map-tools">
+          <button id="fitSelected" type="button" title="Focus selected">⌖ <span>Focus</span></button>
+          <button id="routeToggle" type="button" title="Show route">➜ <span>Route</span></button>
+          <button id="fullscreen" type="button" title="Fullscreen">⛶ <span>Full</span></button>
+          <button id="helpBtn" type="button" title="How to use">?</button>
+        </div>
+
+        <div class="map-hint">Drag · Wheel / pinch · Double-click to zoom</div>
+
+        <div class="map-footer">
+          <div>
+            <strong id="selectedName">No place selected</strong>
+            <span id="selectedType">Search or tap a marker.</span>
+          </div>
+          <div class="footer-actions">
+            <button id="openDetails" type="button">Details</button>
+            <a href="index.html">Site ↗</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <aside class="directory" id="directory" aria-label="Campus place directory">
+      <div class="directory-head">
+        <div>
+          <p class="eyebrow">CAMPUS NAVIGATOR</p>
+          <h2>Find a place</h2>
+          <p class="sub">Search a room, lab, department or service.</p>
+        </div>
+        <div class="head-actions">
+          <span id="count" class="count">0 / 0</span>
+          <button id="closeDirectory" class="close-directory" type="button" aria-label="Close places">×</button>
+        </div>
+      </div>
+
+      <label class="search-box">
+        <span>⌕</span>
+        <input id="search" type="search" placeholder="Search a place…" autocomplete="off">
+        <kbd>Ctrl K</kbd>
+      </label>
+
+      <div class="filters" role="tablist" aria-label="Place filters">
+        <button class="filter active" data-filter="all" type="button">All</button>
+        <button class="filter" data-filter="department" type="button">Departments</button>
+        <button class="filter" data-filter="room" type="button">Rooms</button>
+        <button class="filter" data-filter="lab" type="button">Labs</button>
+        <button class="filter" data-filter="common" type="button">Services</button>
+      </div>
+
+      <div class="quick-tools">
+        <button type="button" id="showAll">Show all</button>
+        <button type="button" id="clearSearch">Clear</button>
+      </div>
+
+      <div id="results" class="results" aria-live="polite"></div>
+
+      <div class="directory-foot">
+        <span><i></i> Live campus data</span>
+        <button id="refreshData" type="button">Refresh ↻</button>
+      </div>
+    </aside>
+  </main>
+</div>
+
+<aside class="details" id="details" aria-hidden="true">
+  <button id="closeDetails" class="close" type="button" aria-label="Close">×</button>
+  <p class="eyebrow" id="detailType">LOCATION</p>
+  <h2 id="detailName">Select a place</h2>
+  <p id="detailDesc">Select a place to see details.</p>
+  <div class="detail-tags"><span id="detailCode">—</span><span id="detailCategory">—</span></div>
+  <div class="detail-actions">
+    <button id="detailFocus" class="primary" type="button">Focus map</button>
+    <button id="detailRoute" type="button">Show route</button>
+  </div>
+  <div class="tip-card">
+    <b>New here?</b>
+    <p>Search a place, tap it, then use <strong>Focus</strong> or <strong>Route</strong>. You can always use ↻ to fit the whole map.</p>
+  </div>
+</aside>
+
+<div class="mobile-bar" id="mobileBar">
+  <button id="mobileSearch" type="button">⌕ <span>Search</span></button>
+  <button id="mobileDirectory" type="button">☰ <span>Places</span></button>
+  <button id="mobileFocus" type="button">⌖ <span>Focus</span></button>
+  <button id="mobileRoute" type="button">➜ <span>Route</span></button>
+</div>
+
+<div class="help-modal" id="helpModal" aria-hidden="true">
+  <div class="help-card">
+    <button id="closeHelp" class="close" type="button" aria-label="Close">×</button>
+    <p class="eyebrow">QUICK GUIDE</p>
+    <h2>Find your place in 3 steps.</h2>
+    <div class="guide-step"><b>01</b><div><strong>Search</strong><p>Type a room, lab, department or service.</p></div></div>
+    <div class="guide-step"><b>02</b><div><strong>Select</strong><p>Tap a result or marker on the plan.</p></div></div>
+    <div class="guide-step"><b>03</b><div><strong>Navigate</strong><p>Use Focus to center the place or Route to show the saved path.</p></div></div>
+    <div class="shortcuts"><span><kbd>Ctrl</kbd><kbd>K</kbd> Search</span><span><kbd>+</kbd><kbd>−</kbd> Zoom</span><span><kbd>R</kbd><kbd>Route</kbd></span><span><kbd>F</kbd><kbd>Focus</kbd></span></div>
+  </div>
+</div>
+
+<script src="js/map.js"></script>
+</body>
+</html>

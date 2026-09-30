@@ -1,0 +1,7 @@
+JSON ONLY LIVE SYNC
+
+The project no longer depends on Netlify Blobs, Netlify Functions, GitHub, or a hosting-specific backend.
+Live shared data is stored as one JSON record in JSONBin.
+
+Admin:
+Draw route -> Save route ↗ -> JSONBin is updated -> every visitor reads the same live data.

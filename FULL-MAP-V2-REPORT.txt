@@ -1,0 +1,22 @@
+ISET DJERBA — FULL MAP NAVIGATOR V2
+
+Changes:
+- Removed the page header so the map uses the complete viewport.
+- Converted the directory into a floating navigator over the map.
+- Fixed initial map sizing so the official plan fits the available desktop viewport.
+- Added a stable Fit/Reset view that returns the whole map.
+- Fixed Focus math: selected markers are centered correctly instead of pushing the map off-screen.
+- Show Route now refreshes live JSONBin route data before drawing, so routes saved after the page was opened can appear.
+- Show Route also focuses the destination automatically.
+- Route line is more visible, with glow, direction arrows, waypoints, start marker and destination halo.
+- Mobile: floating navigator drawer, bottom controls, touch pan, pinch zoom, double-tap/double-click zoom.
+- Desktop: wheel zoom, drag pan, keyboard +/-, F, R and Ctrl/Cmd+K.
+- Kept the same JSONBin configuration, location data and route data format.
+- Kept the main site and admin architecture unchanged.
+
+Checks performed:
+- node --check passed for every JS file.
+- All map.html IDs referenced by map.js exist.
+- campus-data.json parses correctly.
+- Seed data contains 35 locations and 13 route points.
+- No missing DOM selector IDs were found in map.js.

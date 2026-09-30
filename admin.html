@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ISET Djerba — Admin Console</title>
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/admin.css">
+</head>
+<body class="admin-page">
+<header class="topbar">
+  <a class="brand" href="index.html"><span class="brand-main">ISET</span><span class="brand-sub">DJERBA</span></a>
+  <div class="admin-topbar"><span class="admin-status"><i></i> ADMIN CONSOLE</span><a href="index.html">Open navigator ↗</a><button id="logoutButton" type="button">Log out</button></div>
+</header>
+<main class="admin-main">
+  <section id="loginView" class="admin-login">
+    <p class="eyebrow"><span></span> PRIVATE CONTROL ROOM</p><h1>Manage the campus map.</h1><p>Update marker positions, descriptions and route settings for the public navigator.</p>
+    <form id="loginForm" class="admin-login-form"><label>Username<input id="loginUser" autocomplete="username" required></label><label>Password<input id="loginPass" type="password" autocomplete="current-password" required></label><button class="btn-primary" type="submit">Enter admin console ↗</button><small id="loginError" class="admin-error"></small></form>
+    <small class="admin-note">Admin credentials: <b>admin</b> / <b>iset2026</b>. Frontend-only login is not real server security.</small>
+  </section>
+  <section id="adminView" class="admin-console" hidden>
+    <div class="admin-heading"><div><p class="eyebrow"><span></span> CAMPUS DATA MANAGEMENT</p><h1>Map control room.</h1><p>Edit places once and publish them to the navigator and challenge.</p></div><div class="admin-actions"><label style="display:flex;align-items:center;gap:7px;font:800 8px DM Mono;color:#718092;">SYNC PASSWORD <input id="syncPassword" type="password" value="iset2026" style="width:120px;padding:8px;border:1px solid #ccd2d3;border-radius:6px;"></label><span id="syncStatus" style="font:800 8px DM Mono;color:#5cae68;"></span><button id="exportLiveJson" class="btn-secondary" type="button">Export live JSON</button><button id="exportButton" class="btn-secondary" type="button">Export backup</button><button id="resetButton" class="danger-button" type="button">Reset defaults</button></div></div>
+    <div class="admin-grid">
+      <section class="admin-map-panel"><div class="admin-panel-head"><div><span>LIVE MAP EDITOR</span><strong id="markerCount">0 markers</strong></div><small>Drag markers or draw directly on the plan</small></div><div class="admin-map-tools"><button class="map-mode active" data-mode="move" type="button">Move marker</button><button class="map-mode" data-mode="add" type="button">+ Add marker</button><button class="map-mode" data-mode="route" type="button">Draw route</button><button id="saveRouteButton" class="btn-primary" type="button">Save route ↗</button><button id="clearRouteButton" type="button">Clear route</button></div><div id="adminMapViewport" class="admin-map-viewport"><div id="adminMapCanvas" class="admin-map-canvas"><img src="assets/iset-djerba-map.webp" alt="Campus plan"><svg id="adminRouteSvg" class="admin-route-svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path id="adminRoutePath"></path></svg><div id="adminMarkers"></div></div></div><div class="admin-map-foot"><span>Coordinates: <b id="coordinateReadout">—</b></span><span id="mapModeHint">Drag a marker to move it</span><button id="newMarkerButton" type="button">+ New marker</button></div></section>
+      <aside class="admin-editor"><div class="editor-head"><div><span>PLACE EDITOR</span><h2 id="editorTitle">Select a marker</h2></div><button id="deleteButton" class="icon-danger" type="button" disabled>Delete</button></div>
+        <form id="markerForm"><label>Place name<input id="markerName" required></label><div class="form-row"><label>Short code<input id="markerShort" maxlength="6" required></label><label>Category<select id="markerType"><option value="department">Department</option><option value="room">Room</option><option value="lab">Laboratory</option><option value="common">Service</option></select></label></div><label>Description<textarea id="markerDesc" rows="4" required></textarea><div class="form-row"><label>X position %<input id="markerX" type="number" min="0" max="100" step="0.1" required></label><label>Y position %<input id="markerY" type="number" min="0" max="100" step="0.1" required></label></div><button class="btn-primary" type="submit">Save place <b>↗</b></button><p id="editorMessage" class="editor-message" aria-live="polite"></p></form>
+        <div class="route-editor"><span>ROUTE START</span><p>Choose where animated routes begin on the plan.</p><div class="form-row"><label>X position %<input id="routeX" type="number" min="0" max="100" step="0.1"></label><label>Y position %<input id="routeY" type="number" min="0" max="100" step="0.1"></label></div><button id="saveRouteStartButton" class="btn-secondary" type="button">Save route start</button></div>
+      </aside>
+    </div>
+    <div class="admin-table-panel"><div class="admin-panel-head"><div><span>ALL LOCATIONS</span><strong>Click a row to edit</strong></div><input id="adminSearch" type="search" placeholder="Search places..."></div><div id="locationRows" class="location-rows"></div></div>
+  </section>
+</main>
+<script src="js/settings.js"></script><script src="js/jsonbin-config.js"></script><script src="js/app.js"></script>
+<script src="js/admin.js"></script>
+</body>
+</html>

@@ -1,0 +1,4 @@
+Public route display fix:
+- The navigator now uses routesByLocation[selectedMarkerId] directly.
+- It no longer guesses which marker owns a route by nearest-point distance.
+- Netlify Blobs reads use strong consistency so a newly saved route is immediately readable.

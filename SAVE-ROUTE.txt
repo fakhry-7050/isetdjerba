@@ -1,0 +1,8 @@
+SAVE A ROUTE
+
+1. Click a marker (for example Salle 102).
+2. Click Draw route.
+3. Click the map to add the route points.
+4. Click the new 'Save route ↗' button in the toolbar.
+5. The route is stored under that marker and synced to the shared data.
+6. Public visitors selecting that marker will use its saved route.

@@ -1,0 +1,5 @@
+Mobile map gesture fix:
+- one finger = pan
+- two fingers = pinch zoom, centered under the fingers
+- two-finger midpoint movement also pans
+- desktop wheel zoom preserved

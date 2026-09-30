@@ -1,0 +1,8 @@
+1. Select the marker.
+2. Choose Draw route.
+3. Click the map to draw the path.
+4. Click Save Route.
+5. That route is stored under that marker ID in routesByLocation.
+6. Public visitors selecting that marker see its route.
+7. Clear Route removes only that marker's route.
+8. Export live JSON includes routesByLocation.

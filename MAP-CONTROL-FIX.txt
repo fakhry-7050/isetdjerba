@@ -1,0 +1,9 @@
+SMART MAP CONTROL FIX
+
+- Mouse wheel zooms around the cursor smoothly.
+- Two-finger pinch zooms around the pinch point and supports moving the map.
+- One-finger / mouse drag pans the map with safe boundaries.
+- Double-click / double-tap on the map background zooms in at that point.
+- Marker clicks remain clicks; they do not accidentally drag the map.
+- Focus now centers the selected location correctly.
+- Zoom range is 0.65x to 4.5x.

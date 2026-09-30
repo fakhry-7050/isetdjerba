@@ -1,0 +1,36 @@
+ISET DJERBA - JSONBin setup
+
+1. Create an account on JSONBin.io.
+2. Create ONE JSON Bin.
+3. Put the current content of data/campus-data.json into the Bin.
+4. Make the Bin PUBLIC so the public map can read it without an API key.
+5. Create an Access Key with Bins -> Update permission only.
+6. Open js/jsonbin-config.js and replace:
+   BIN_ID: 'PASTE_YOUR_BIN_ID_HERE'
+   UPDATE_ACCESS_KEY: 'PASTE_YOUR_UPDATE_ACCESS_KEY_HERE'
+7. Upload the project to ANY static hosting.
+
+Important:
+- No Netlify Blobs.
+- No GitHub.
+- No database.
+- The live source of truth is the JSON Bin.
+- data/campus-data.json remains a local backup/default copy.
+- Public visitors only read the Bin.
+- Admin Save place / Save route updates the Bin.
+
+Security note:
+The update access key is present in the admin page because this version is designed to work on any static host without a backend. Keep the existing admin login and do not share admin.html credentials. For stronger security, a backend/serverless proxy would be required.
+
+
+CONFIGURED BIN
+BIN_ID: 6ab4ff7effd5d160532a06c5
+Access key: configured in js/jsonbin-config.js
+
+
+FINAL FIX NOTES
+- jsonbin-config.js is now loaded BEFORE app.js on index.html and admin.html.
+- Public site can read the public Bin without exposing the update key.
+- Admin uses the Access Key only for PUT updates.
+- Login shown in the UI matches the actual frontend credentials: admin / iset2026.
+- If the admin shows "JSONBin error", open DevTools Console and inspect the HTTP status; common causes are a wrong Bin ID or an Access Key without Bins > Read/Update permission.
