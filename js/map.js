@@ -279,9 +279,11 @@
 
   // One control toggles only the Campus Navigator directory.
   const directory = $('#directory');
+  const floatingSearch = $('#openDirectory');
   const toggleUI = $('#toggleUI');
   function setNavigatorHidden(hidden){
     directory?.classList.toggle('navigator-hidden', hidden);
+    floatingSearch?.classList.toggle('navigator-hidden', hidden);
     if(toggleUI){
       toggleUI.textContent = hidden ? '☰' : '☰';
       toggleUI.setAttribute('aria-label', hidden ? 'Show Campus Navigator' : 'Hide Campus Navigator');
