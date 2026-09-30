@@ -168,55 +168,29 @@ button,a{touch-action:manipulation}
   .ui-toggle{left:9px !important;top:111px !important;min-width:78px !important}
 }
 
-/* Campus Navigator toggle: one button, only for the directory panel. */
-.ui-toggle{
-  position:absolute !important;
-  left:326px !important;
-  top:166px !important;
-  right:auto !important;
-  z-index:95 !important;
-  min-width:76px !important;
-  height:36px !important;
-  border:1px solid rgba(255,255,255,.22) !important;
-  border-radius:9px !important;
-  background:rgba(7,17,31,.94) !important;
-  color:#b8ff3d !important;
-  padding:0 10px !important;
+
+/* Campus Navigator toggle is a fourth map control, next to zoom/reset. */
+.map-controls #toggleUI{
   display:flex !important;
-  align-items:center !important;
-  justify-content:center !important;
-  font-size:9px !important;
-  font-weight:900 !important;
-  cursor:pointer !important;
-  box-shadow:0 7px 18px rgba(0,0,0,.28) !important;
+  align-items:center;
+  justify-content:center;
+  width:42px;
+  height:40px;
+  border:0;
+  border-top:1px solid #e7ebef;
+  background:#fff;
+  color:#13233a;
+  font-size:13px;
+  font-weight:900;
+  cursor:pointer;
 }
+.map-controls #toggleUI:hover{background:#f2f5f7}
 .directory.navigator-hidden{
   transform:translateX(calc(-100% - 30px)) !important;
   opacity:0 !important;
   pointer-events:none !important;
   visibility:hidden !important;
 }
-.ui-toggle.nav-hidden{
-  left:18px !important;
-  top:158px !important;
-  background:#102238 !important;
-  color:#b8ff3d !important;
-  border-color:rgba(165,255,63,.5) !important;
-}
-.map-controls{display:flex !important;visibility:visible !important;opacity:1 !important;pointer-events:auto !important}
 @media(max-width:900px){
-  .ui-toggle{
-    left:calc(min(100vw - 18px, 360px) - 86px) !important;
-    top:18px !important;
-    min-width:76px !important;
-    height:38px !important;
-  }
-  .ui-toggle.nav-hidden{
-    left:10px !important;
-    top:10px !important;
-  }
-}
-@media(max-width:520px){
-  .ui-toggle{left:calc(100vw - 96px) !important;top:10px !important}
-  .ui-toggle.nav-hidden{left:9px !important;top:10px !important}
+  .map-controls #toggleUI{width:42px;height:40px}
 }
