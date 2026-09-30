@@ -194,3 +194,10 @@ button,a{touch-action:manipulation}
 @media(max-width:900px){
   .map-controls #toggleUI{width:42px;height:40px}
 }
+
+/* Hide/show Campus Navigator together with its Find a place launcher. */
+.map-shell.navigator-hidden .floating-search{
+  opacity:0 !important;
+  pointer-events:none !important;
+  visibility:hidden !important;
+}
