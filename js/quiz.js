@@ -70,7 +70,7 @@ function transform() { canvas.style.transform = `translate(calc(-50% + ${panX}px
 function shuffle(list) { return [...list].sort(() => Math.random() - 0.5); }
 
 function renderMarkers() {
-  markers.innerHTML = locations.filter(location => String(location.short || '').toUpperCase() !== 'CLB').map(location => `<div class="quiz-marker" data-id="${location.id}" style="left:${mapX(location.x)}%;top:${mapY(location.y)}%"><button type="button" aria-label="${location.name}"><span>${location.short}</span></button><em>${location.short}</em></div>`).join('');
+  markers.innerHTML = locations.map(location => `<div class="quiz-marker" data-id="${location.id}" style="left:${mapX(location.x)}%;top:${mapY(location.y)}%"><button type="button" aria-label="${location.name}"><span>${location.short}</span></button><em>${location.short}</em></div>`).join('');
   markers.querySelectorAll('.quiz-marker button').forEach(button => button.addEventListener('click', event => {
     event.stopPropagation();
     answer(button.parentElement.dataset.id);
