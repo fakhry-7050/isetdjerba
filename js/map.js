@@ -118,8 +118,43 @@
     $('#detailDesc').textContent=l?.desc||'Select a marker to see details.';
     $('#detailCode').textContent=l?.short||'—';
     $('#detailCategory').textContent=l?typeLabel(l.type):'—';
+    renderDetailGallery(l?.images || []);
     $('#routeToggle').classList.toggle('active',!!state.showRoute);
     $('#mobileRoute').classList.toggle('active',!!state.showRoute);
+  }
+
+  function renderDetailGallery(images){
+    const box = $('#detailGallery');
+    if(!box) return;
+    const list = Array.isArray(images) ? images.filter(Boolean).slice(0,12) : [];
+    if(!list.length){
+      box.innerHTML = '<div class="detail-gallery-empty">No photos added for this place.</div>';
+      return;
+    }
+    box.innerHTML = list.map((url,i) => `<button class="detail-photo" type="button" data-photo-index="${i}" aria-label="Open photo ${i+1}"><img src="${escapeAttr(url)}" alt="Photo ${i+1}" loading="lazy" onerror="this.closest('.detail-photo').classList.add('broken')"></button>`).join('');
+    box.querySelectorAll('.detail-photo').forEach(btn => btn.addEventListener('click',()=>{
+      const index=Number(btn.dataset.photoIndex);
+      openPhotoViewer(list,index);
+    }));
+  }
+
+  function openPhotoViewer(images,index){
+    const old=$('#photoViewer');
+    if(old) old.remove();
+    const modal=document.createElement('div');
+    modal.id='photoViewer';
+    modal.className='photo-viewer';
+    modal.innerHTML=`<div class="photo-viewer-backdrop" data-close-photo></div><div class="photo-viewer-card"><button class="photo-viewer-close" type="button" data-close-photo>×</button><button class="photo-nav prev" type="button" data-photo-prev>‹</button><img id="photoViewerImage" src="${escapeAttr(images[index])}" alt="Place photo"><button class="photo-nav next" type="button" data-photo-next>›</button><div class="photo-counter">${index+1} / ${images.length}</div></div>`;
+    document.body.appendChild(modal);
+    let current=index;
+    const image=modal.querySelector('#photoViewerImage');
+    const counter=modal.querySelector('.photo-counter');
+    const show=i=>{current=(i+images.length)%images.length;image.src=images[current];counter.textContent=`${current+1} / ${images.length}`;};
+    modal.querySelector('[data-photo-prev]').addEventListener('click',()=>show(current-1));
+    modal.querySelector('[data-photo-next]').addEventListener('click',()=>show(current+1));
+    modal.querySelectorAll('[data-close-photo]').forEach(el=>el.addEventListener('click',()=>modal.remove()));
+    const key=e=>{if(e.key==='Escape'){modal.remove();document.removeEventListener('keydown',key)}else if(e.key==='ArrowLeft')show(current-1);else if(e.key==='ArrowRight')show(current+1)};
+    document.addEventListener('keydown',key);
   }
 
   function openDetailsPanel(){details.classList.add('open');details.setAttribute('aria-hidden','false')}
