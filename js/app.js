@@ -438,7 +438,7 @@ function render() {
 
   if (markers) {
 
-    markers.innerHTML = locations.map(location => {
+    markers.innerHTML = locations.filter(location => String(location.short || '').toUpperCase() !== 'CLB').map(location => {
 
       const isVisible =
         list.some(item =>
