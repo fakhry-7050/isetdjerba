@@ -63,6 +63,15 @@ const locations = [
     y: 61.6,
     desc: 'Administrative services building, east of the central courtyard.'
   },
+  {
+    id: 'custom-1790180404979',
+    name: 'Clubs',
+    short: 'CLB',
+    type: 'common',
+    x: 67.6,
+    y: 81.5,
+    desc: 'Clubs integ.'
+  },
 
   {
     id: 'machine',
