@@ -1,6 +1,6 @@
 const locations = [
   ['dti','Département Technologies de l’Informatique','DTI','department',82,88.8],['seg','Département Sciences Économiques et Gestion','SEG','department',54.2,89],['gm','Département Génie Mécanique','GM','department',79,29.8],['ge','Département Génie Électrique','GE','department',48.8,36.2],
-  ['library','Bibliothèque','BIB','common',49.5,44.2],['amphi','Amphithéâtre & buvette','AMP','common',40.3,61.5],['admin','Administration','ADM','common',77.7,61.6],
+  ['library','Bibliothèque','BIB','common',49.5,44.2],['amphi','Amphithéâtre & buvette','AMP','common',40.3,61.5],['admin','Administration','ADM','common',77.7,61.6],['custom-1790180404979','Clubs','CLB','common',67.6,81.5],
   ['machine','Hall Machine','HM','lab',63.6,32.5],['cao','Lab CAO','CAO','lab',74.8,36.1],['ge2','Lab GE2','GE2','lab',78.9,36.2],['cnd','Lab CND','CND','lab',81.2,41.1],['systeme','Lab Système','SYS','lab',75,45.8],['langue','Labo de langue','LANG','lab',46.6,51],['lab2','Lab 2 AII','AII','lab',76.2,72.9],['lab3','Lab 3 DPI','DPI','lab',81.3,72.9],['lab1','Lab 1 SEI','SEI','lab',75.7,82.2],['lab4','Lab 4 CFI','CFI','lab',81,82.1],
   ...['104','103','102','101'].map((n,i)=>['s'+n,'Salle '+n,n,'room',[58.6,62.2,66,69][i],44.1]),
   ...['105','106','107','108'].map((n,i)=>['s'+n,'Salle '+n,n,'room',53,[51,54.3,63.4,67.2][i]]),
