@@ -93,7 +93,7 @@
   }
 
   function renderMarkers(){
-    markers.innerHTML = state.locations.map(l => `
+    markers.innerHTML = state.locations.filter(l => String(l.short || '').toUpperCase() !== 'CLB').map(l => `
       <button class="marker ${state.selected?.id===l.id?'selected':''}" data-id="${escapeAttr(l.id)}" style="left:${mapX(l.x)}%;top:${mapY(l.y)}%" aria-label="${escapeAttr(l.name)}" title="${escapeAttr(l.name)}">
         <span>${escapeHtml(l.short || shortType(l.type))}</span>
       </button>`).join('');
