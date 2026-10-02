@@ -169,10 +169,19 @@ function showEditor(location) {
   byId('markerShort').value = location?.short || '';
   byId('markerType').value = location?.type || 'common';
   byId('markerDesc').value = location?.desc || '';
+  byId('markerImages').value = Array.isArray(location?.images) ? location.images.join('\n') : '';
+  renderAdminImagePreview();
   byId('markerX').value = Number(location?.x ?? 50).toFixed(1);
   byId('markerY').value = Number(location?.y ?? 50).toFixed(1);
   message.textContent = location ? 'Marker selected. Click the map to reposition it.' : 'Create a new marker, then save it.';
   render();
+}
+
+function renderAdminImagePreview() {
+  const box = byId('imagePreview');
+  if (!box) return;
+  const urls = (byId('markerImages')?.value || '').split(/\r?\n/).map(v => v.trim()).filter(Boolean);
+  box.innerHTML = urls.length ? urls.map((url, i) => '<div class="admin-image-thumb"><img src="' + url.replace(/"/g, '&quot;') + '" alt="Photo ' + (i + 1) + '"></div>').join('') : '<span class="image-empty">No photos added yet.</span>';
 }
 
 function render() {
@@ -234,7 +243,8 @@ byId('logoutButton').addEventListener('click', () => {
 
 form.addEventListener('submit', async event => {
   event.preventDefault();
-  const data = { id: selectedId || `custom-${Date.now()}`, name: byId('markerName').value.trim(), short: byId('markerShort').value.trim().toUpperCase(), type: byId('markerType').value, desc: byId('markerDesc').value.trim(), x: Number(byId('markerX').value), y: Number(byId('markerY').value) };
+  const images = (byId('markerImages').value || '').split(/\r?\n/).map(v => v.trim()).filter(Boolean).slice(0, 12);
+  const data = { id: selectedId || `custom-${Date.now()}`, name: byId('markerName').value.trim(), short: byId('markerShort').value.trim().toUpperCase(), type: byId('markerType').value, desc: byId('markerDesc').value.trim(), images, x: Number(byId('markerX').value), y: Number(byId('markerY').value) };
   const index = locations.findIndex(location => location.id === data.id);
   if (index >= 0) locations[index] = data;
   else locations.push(data);
@@ -257,6 +267,7 @@ byId('deleteButton').addEventListener('click', async () => {
 });
 
 byId('newMarkerButton').addEventListener('click', () => showEditor(null));
+byId('markerImages')?.addEventListener('input', renderAdminImagePreview);
 search.addEventListener('input', render);
 
 document.querySelectorAll('.map-mode').forEach(button => button.addEventListener('click', () => {
