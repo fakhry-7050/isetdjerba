@@ -10,7 +10,7 @@
   const state = {
     locations: [], routesByLocation: {}, routePoints: [], routeSettings: {x:64.2,y:83.1},
     selected: null, filter: 'all', query: '', showRoute: false,
-    scale: 1, panX: 0, panY: 0, dragging: false, pointers: new Map(), lastTap: 0
+    scale: 1, panX: 0, panY: 0, dragging: false, pointers: new Map(), lastTap: 0, view3D: false
   };
 
   const MAP_ASPECT = 2048 / 1449;
@@ -161,7 +161,9 @@
   function closeDetails(){details.classList.remove('open');details.setAttribute('aria-hidden','true')}
 
   function applyTransform(){
-    canvas.style.transform=`translate3d(calc(-50% + ${state.panX}px),calc(-50% + ${state.panY}px),0) scale(${state.scale})`;
+    viewport.classList.toggle('view-3d', !!state.view3D);
+    const tilt = state.view3D ? 52 : 0;
+    canvas.style.transform=`translate3d(calc(-50% + ${state.panX}px),calc(-50% + ${state.panY}px),0) scale(${state.scale}) rotateX(${tilt}deg)`;
   }
 
   function fitMap(){
@@ -189,6 +191,14 @@
   }
 
   function resetView(){fitMap()}
+  function toggle3D(){
+    state.view3D=!state.view3D;
+    viewport.classList.toggle('view-3d',state.view3D);
+    const btn=$('#view3D');
+    if(btn){btn.classList.toggle('active',state.view3D);btn.textContent=state.view3D?'2D':'3D';}
+    fitMap();
+    if(state.selected) focusSelected({route:state.showRoute});
+  }
 
   function focusSelected(options={}){
     if(!state.selected)return;
