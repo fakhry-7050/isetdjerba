@@ -209,3 +209,15 @@ button,a{touch-action:manipulation}
 }
 
 .detail-gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin:14px 0 2px}.detail-photo{position:relative;aspect-ratio:4/3;padding:0;border:1px solid #dce2e8;border-radius:8px;overflow:hidden;background:#eef1f4;cursor:pointer}.detail-photo img{width:100%;height:100%;display:block;object-fit:cover;transition:transform .2s ease}.detail-photo:hover img{transform:scale(1.05)}.detail-photo.broken{display:none}.detail-gallery-empty{padding:10px 11px;background:#f4f7fa;border-radius:8px;color:#8491a3;font-size:9px;text-align:center}.photo-viewer{position:fixed;inset:0;z-index:300;display:grid;place-items:center}.photo-viewer-backdrop{position:absolute;inset:0;background:rgba(3,9,18,.88);backdrop-filter:blur(5px)}.photo-viewer-card{position:relative;z-index:1;width:min(92vw,1100px);height:min(88vh,850px);display:flex;align-items:center;justify-content:center}.photo-viewer-card>img{max-width:88%;max-height:88%;object-fit:contain;border-radius:10px;box-shadow:0 25px 80px #0009}.photo-viewer-close,.photo-nav{position:absolute;border:1px solid #ffffff2b;background:#ffffff18;color:#fff;border-radius:50%;cursor:pointer;z-index:2}.photo-viewer-close{right:10px;top:10px;width:40px;height:40px;font-size:25px}.photo-nav{top:50%;transform:translateY(-50%);width:44px;height:44px;font-size:32px}.photo-nav.prev{left:5px}.photo-nav.next{right:5px}.photo-counter{position:absolute;bottom:15px;left:50%;transform:translateX(-50%);background:#07111fe6;color:#fff;padding:6px 10px;border-radius:999px;font:700 9px ui-monospace,SFMono-Regular,Menlo,monospace}
+
+/* Google-Maps-inspired campus 3D navigation */
+.map-viewport.view-3d{perspective:1200px;perspective-origin:50% 55%}
+.map-viewport.view-3d .map-canvas{transform-style:preserve-3d}
+.map-viewport.view-3d .map-canvas::after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(to bottom,transparent 55%,rgba(7,17,31,.10));z-index:2}
+.map-viewport.view-3d .marker{transform:translate(-50%,-100%) translateZ(18px)}
+.map-viewport.view-3d .marker:hover,.map-viewport.view-3d .marker.selected{transform:translate(-50%,-100%) translateZ(18px) scale(1.08)}
+.map-controls #view3D{font-size:10px;font-weight:900;border-top:1px solid #e7ebef}
+.map-controls #view3D.active{background:#07111f;color:#b8ff3d}
+.map-viewport.view-3d .route-line{stroke-width:8}
+.map-viewport.view-3d .destination-halo{filter:drop-shadow(0 4px 5px rgba(0,0,0,.4))}
+@media(max-width:900px){.map-viewport.view-3d{perspective:900px}}
