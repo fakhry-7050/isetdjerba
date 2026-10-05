@@ -62,6 +62,7 @@
       return;
     }
     state.locations = data.locations;
+    window.__isetCampusLocations = state.locations;
     state.selected = selectedId ? state.locations.find(l=>l.id===selectedId) || null : null;
     state.routesByLocation = data.routesByLocation || {};
     state.routePoints = Array.isArray(data.routePoints) ? data.routePoints : [];
