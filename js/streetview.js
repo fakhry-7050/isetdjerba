@@ -8,6 +8,7 @@
   function close(){
     if(!modal)return;
     cancelAnimationFrame(frame);
+    try{modal.__cleanup?.();}catch(e){}
     try{renderer?.dispose?.();}catch(e){}
     modal.remove();
     modal=null;scene=null;camera=null;renderer=null;sphere=null;current=null;
