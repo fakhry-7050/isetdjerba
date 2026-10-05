@@ -119,6 +119,9 @@
     $('#detailCode').textContent=l?.short||'—';
     $('#detailCategory').textContent=l?typeLabel(l.type):'—';
     renderDetailGallery(l?.images || []);
+    window.__isetSelectedLocation = l || null;
+    document.dispatchEvent(new CustomEvent('iset:location-selected', {detail:l || null}));
+    $('#detailStreetView')?.classList.toggle('has-panorama', !!l?.panorama);
     $('#routeToggle').classList.toggle('active',!!state.showRoute);
     $('#mobileRoute').classList.toggle('active',!!state.showRoute);
   }
@@ -344,6 +347,7 @@
   $('#fullscreen').addEventListener('click',()=>{if(!document.fullscreenElement)document.documentElement.requestFullscreen?.();else document.exitFullscreen?.()});
   $('#openDetails').addEventListener('click',openDetailsPanel);$('#closeDetails').addEventListener('click',closeDetails);
   $('#detailFocus').addEventListener('click',()=>{focusSelected();closeDetails()});$('#detailRoute').addEventListener('click',()=>toggleRoute(true));
+  $('#detailStreetView')?.addEventListener('click',()=>window.openIsetStreetView?.(state.selected));
   $('#search').addEventListener('input',e=>{state.query=e.target.value;renderDirectory()});
   $('#clearSearch').addEventListener('click',()=>{$('#search').value='';state.query='';renderDirectory();$('#search').focus()});
   $('#showAll').addEventListener('click',()=>{state.filter='all';state.query='';$('#search').value='';$$('.filter').forEach(x=>x.classList.toggle('active',x.dataset.filter==='all'));renderDirectory()});
