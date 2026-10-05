@@ -20,6 +20,7 @@ const form = document.querySelector('#markerForm');
 const rows = document.querySelector('#locationRows');
 const search = document.querySelector('#adminSearch');
 const message = document.querySelector('#editorMessage');
+const CLOUD_KEY = 'iset-cloudinary-config';
 loginView.hidden = false;
 loginView.style.display = 'block';
 adminView.hidden = true;
@@ -161,6 +162,45 @@ function renderRoute() {
   routePath.setAttribute('d', points.length ? `M ${points.join(' L ')}` : '');
 }
 
+function loadCloudinaryConfig(){
+  try{return JSON.parse(localStorage.getItem(CLOUD_KEY)||'{}')}catch{return {}}
+}
+function renderCloudinaryConfig(){
+  const cfg=loadCloudinaryConfig();
+  const cloud=byId('cloudinaryCloud'), preset=byId('cloudinaryPreset');
+  if(cloud) cloud.value=cfg.cloud||'';
+  if(preset) preset.value=cfg.preset||'';
+  const status=byId('cloudinaryStatus');
+  if(status) status.textContent=cfg.cloud&&cfg.preset?'Ready to upload.':'Add your Cloudinary cloud name + unsigned preset.';
+}
+function populateStreetLinks(selected=[]){
+  const select=byId('streetLinks'); if(!select)return;
+  const selectedSet=new Set(Array.isArray(selected)?selected:[]);
+  select.innerHTML=locations.filter(l=>l.id!==selectedId).map(l=>'<option value="'+String(l.id).replace(/"/g,'&quot;')+'" '+(selectedSet.has(l.id)?'selected':'')+'>'+String(l.name).replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]))+'</option>').join('');
+}
+function renderPanoramaPreview(url){
+  const box=byId('panoramaPreview'); if(!box)return;
+  box.innerHTML=url?'<div class="panorama-preview-card"><img src="'+String(url).replace(/"/g,'&quot;')+'" alt="360 panorama preview"><span>360° image attached</span></div>':'<div class="image-empty">No 360° panorama uploaded yet.</div>';
+}
+async function uploadPanorama(){
+  const file=byId('panoramaFile')?.files?.[0];
+  const cfg=loadCloudinaryConfig();
+  const status=byId('panoramaUploadStatus');
+  if(!file){if(status)status.textContent='Choose a 360° image first.';return;}
+  if(!cfg.cloud||!cfg.preset){if(status)status.textContent='Set up Cloudinary first above.';document.querySelector('.upload-settings')?.setAttribute('open','');return;}
+  if(file.size>100*1024*1024){if(status)status.textContent='File is over 100 MB.';return;}
+  if(status)status.textContent='Uploading…';
+  const fd=new FormData(); fd.append('file',file); fd.append('upload_preset',cfg.preset); fd.append('folder','iset-djerba/360');
+  try{
+    const res=await fetch('https://api.cloudinary.com/v1_1/'+encodeURIComponent(cfg.cloud)+'/image/upload',{method:'POST',body:fd});
+    const data=await res.json().catch(()=>({}));
+    if(!res.ok||!data.secure_url)throw new Error(data.error?.message||'Upload failed');
+    byId('markerPanorama').value=data.secure_url;
+    renderPanoramaPreview(data.secure_url);
+    if(status)status.textContent='Uploaded ✓';
+  }catch(err){console.error(err);if(status)status.textContent='Upload failed: '+err.message;}
+}
+
 function showEditor(location) {
   selectedId = location?.id || null;
   byId('editorTitle').textContent = location?.name || 'New marker';
@@ -170,6 +210,11 @@ function showEditor(location) {
   byId('markerType').value = location?.type || 'common';
   byId('markerDesc').value = location?.desc || '';
   byId('markerImages').value = Array.isArray(location?.images) ? location.images.join('\n') : '';
+  byId('markerPanorama').value = location?.panorama || '';
+  byId('panoramaFile').value = '';
+  byId('panoramaUploadStatus').textContent = '';
+  renderPanoramaPreview(location?.panorama || '');
+  populateStreetLinks(location?.streetLinks || []);
   renderAdminImagePreview();
   byId('markerX').value = Number(location?.x ?? 50).toFixed(1);
   byId('markerY').value = Number(location?.y ?? 50).toFixed(1);
@@ -244,7 +289,9 @@ byId('logoutButton').addEventListener('click', () => {
 form.addEventListener('submit', async event => {
   event.preventDefault();
   const images = (byId('markerImages').value || '').split(/\r?\n/).map(v => v.trim()).filter(Boolean).slice(0, 12);
-  const data = { id: selectedId || `custom-${Date.now()}`, name: byId('markerName').value.trim(), short: byId('markerShort').value.trim().toUpperCase(), type: byId('markerType').value, desc: byId('markerDesc').value.trim(), images, x: Number(byId('markerX').value), y: Number(byId('markerY').value) };
+  const panorama = byId('markerPanorama').value.trim();
+  const streetLinks = [...(byId('streetLinks')?.selectedOptions || [])].map(o=>o.value);
+  const data = { id: selectedId || `custom-${Date.now()}`, name: byId('markerName').value.trim(), short: byId('markerShort').value.trim().toUpperCase(), type: byId('markerType').value, desc: byId('markerDesc').value.trim(), images, panorama, streetLinks, x: Number(byId('markerX').value), y: Number(byId('markerY').value) };
   const index = locations.findIndex(location => location.id === data.id);
   if (index >= 0) locations[index] = data;
   else locations.push(data);
@@ -267,6 +314,13 @@ byId('deleteButton').addEventListener('click', async () => {
 });
 
 byId('newMarkerButton').addEventListener('click', () => showEditor(null));
+byId('saveCloudinary')?.addEventListener('click',()=>{
+  const cloud=byId('cloudinaryCloud').value.trim();
+  const preset=byId('cloudinaryPreset').value.trim();
+  localStorage.setItem(CLOUD_KEY,JSON.stringify({cloud,preset}));
+  renderCloudinaryConfig();
+});
+byId('uploadPanoramaButton')?.addEventListener('click',uploadPanorama);
 byId('markerImages')?.addEventListener('input', renderAdminImagePreview);
 search.addEventListener('input', render);
 
@@ -428,6 +482,7 @@ byId('exportButton').addEventListener('click', () => {
   URL.revokeObjectURL(link.href);
 });
 
+renderCloudinaryConfig();
 if (sessionStorage.getItem(AUTH_KEY) === 'true') openAdmin();
 })();
 
