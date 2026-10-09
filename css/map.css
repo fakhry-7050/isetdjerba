@@ -267,7 +267,7 @@ html,body{background:#07111f;color:#edf5ff}
   content:"";position:absolute;inset:0;z-index:1;pointer-events:none;
   background:radial-gradient(ellipse at 52% 45%,transparent 42%,rgba(4,10,18,.12) 100%);
 }
-.map-canvas{z-index:0}
+.map-canvas{z-index:2}
 .map-overlay,#markers,.start-label{z-index:4}
 .map-overlay{overflow:visible}
 #markers{pointer-events:none}
