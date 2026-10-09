@@ -177,10 +177,9 @@
   function fitMap(){
     const rect=viewport.getBoundingClientRect();
     if(!rect.width || !rect.height)return;
-    // Show only the campus-plan portion (legend removed), keeping the full plan visible.
-    const width=Math.min(rect.width*0.98, rect.height*MAP_ASPECT*0.98);
-    canvas.style.width=`${Math.round(width)}px`;
-    canvas.style.height='auto';
+    // The cropped campus map itself is the full-screen background.
+    canvas.style.width=`${Math.round(rect.width)}px`;
+    canvas.style.height=`${Math.round(rect.height)}px`;
     state.scale=1; state.panX=0; state.panY=0; applyTransform();
   }
 
