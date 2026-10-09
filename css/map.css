@@ -17,9 +17,9 @@ button,a{touch-action:manipulation}
 /* Fill the screen's unused aspect-ratio space with the same campus plan, not black bars. */
 .map-viewport::before{content:"";position:absolute;inset:-28px;z-index:-1;background:url('../assets/final1.png') center/cover no-repeat;filter:blur(22px) brightness(.78);transform:scale(1.04);pointer-events:none}
 .map-viewport.dragging{cursor:grabbing}
-.map-canvas{position:absolute;width:100px;height:auto;aspect-ratio:0.995/1;left:50%;top:50%;transform:translate3d(-50%,-50%,0) scale(1);transform-origin:center center;will-change:transform;contain:layout style}
+.map-canvas{position:absolute;width:100px;height:auto;aspect-ratio:1.62/1;left:50%;top:50%;transform:translate3d(-50%,-50%,0) scale(1);transform-origin:center center;will-change:transform;contain:layout style}
 .map-canvas{overflow:hidden}
-.map-canvas img{position:absolute;inset:0;width:100%;height:100%;max-width:none;object-fit:cover;object-position:right center;display:block;user-select:none;pointer-events:none;-webkit-user-drag:none}
+.map-canvas img{position:absolute;left:-42.05%;top:-14%;width:142.05%;height:114%;max-width:none;object-fit:fill;display:block;user-select:none;pointer-events:none;-webkit-user-drag:none}
 .map-overlay{position:absolute;inset:0;width:100%;height:100%;overflow:visible;pointer-events:none}
 #markers{position:absolute;inset:0;z-index:10}
 .marker{position:absolute;transform:translate(-50%,-100%);width:42px;height:48px;border:0;background:none;padding:0;cursor:pointer;filter:drop-shadow(0 4px 6px rgba(0,0,0,.28));transition:transform .16s ease,filter .16s ease;z-index:5;touch-action:manipulation}
