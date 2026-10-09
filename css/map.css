@@ -435,3 +435,113 @@ kbd{background:rgba(255,255,255,.07);border-color:rgba(182,214,243,.16);color:#9
 @media(prefers-reduced-motion:reduce){
   .marker,.map-brand,.map-controls,.map-footer,.directory{animation:none!important}
 }
+
+
+/* =========================================================
+   MOBILE / TABLET UX FIX — responsive map + usable place sheet
+   ========================================================= */
+html{height:100%;height:100dvh}
+body{min-height:100%;min-height:100dvh}
+.navigator{height:100%;height:100dvh;min-height:0}
+.layout,.map-panel,.map-shell,.map-viewport{min-height:0}
+.directory{min-height:0}
+.directory-head,.search-box,.filters,.quick-tools,.directory-foot{flex-shrink:0}
+.results{flex:1 1 auto;min-height:0;overscroll-behavior:contain}
+.search-box input{font-size:16px} /* prevents iOS/Android browser auto-zoom on focus */
+button,.result,.filter,.quick-tools button{ -webkit-tap-highlight-color:transparent }
+button:focus-visible,input:focus-visible{outline:2px solid #67e8f9;outline-offset:2px}
+.map-controls button{touch-action:manipulation}
+@media(max-width:900px){
+  .map-brand{left:10px;right:64px;top:10px;max-width:calc(100vw - 84px);gap:10px;padding:10px 12px}
+  .map-brand h1{font-size:14px}
+  .map-brand .live-status{font-size:8px}
+  .map-brand .live-status span{max-width:100px;overflow:hidden;text-overflow:ellipsis}
+  .floating-search{left:10px;top:72px;height:42px;min-height:42px}
+  .map-controls{right:9px;top:9px;padding:4px;border-radius:14px}
+  .map-controls button,.map-controls #toggleUI{width:42px;height:42px;min-height:42px}
+  .map-tools{left:10px;bottom:calc(72px + env(safe-area-inset-bottom));gap:6px}
+  .map-tools button{min-height:42px}
+  .map-footer{left:10px;right:10px;bottom:calc(72px + env(safe-area-inset-bottom));max-width:none}
+  .zoom-indicator{right:10px;bottom:calc(124px + env(safe-area-inset-bottom))}
+  .directory{
+    left:10px;right:10px;top:auto;bottom:calc(72px + env(safe-area-inset-bottom));
+    width:auto;height:min(72dvh,650px);max-height:calc(100dvh - 150px);
+    border-radius:20px;transform:translateY(calc(100% + 28px));opacity:0;
+    visibility:hidden;pointer-events:none;
+    box-shadow:0 30px 90px rgba(0,0,0,.48),inset 0 1px rgba(255,255,255,.07);
+    transition:transform .26s cubic-bezier(.2,.8,.2,1),opacity .22s ease,visibility .22s ease;
+  }
+  .directory.open{
+    top:auto;transform:translateY(0);opacity:1;visibility:visible;pointer-events:auto;
+  }
+  .directory.navigator-hidden{
+    top:auto;transform:translateY(calc(100% + 28px)) !important;opacity:0 !important;
+    visibility:hidden !important;pointer-events:none !important;
+  }
+  .directory-head{padding:15px 15px 10px}
+  .directory-head h2{font-size:23px}
+  .sub{font-size:11px;line-height:1.35}
+  .search-box{margin:0 12px 9px;min-height:44px;height:44px}
+  .filters{padding:0 12px 8px;gap:7px;overflow-x:auto;overflow-y:hidden;scroll-snap-type:x proximity}
+  .filter{height:35px;min-height:35px;padding:0 13px;scroll-snap-align:start;font-size:10px}
+  .quick-tools{padding:0 12px 9px}
+  .quick-tools button{height:34px;min-height:34px;padding:0 12px}
+  .results{padding:0 8px 8px}
+  .result{min-height:56px;padding:8px 9px;grid-template-columns:34px minmax(0,1fr) auto;gap:9px}
+  .result-icon{width:32px;height:32px;font-size:9px}
+  .result-name{font-size:11px;white-space:normal;line-height:1.25;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical}
+  .result-meta{font-size:9px;margin-top:3px}
+  .directory-foot{padding:10px 13px;min-height:40px}
+  .close-directory{width:40px;height:40px;min-width:40px;font-size:24px}
+  .mobile-bar{left:9px;right:9px;bottom:calc(8px + env(safe-area-inset-bottom));height:58px;min-height:58px;padding:5px;border-radius:17px}
+  .mobile-bar button{min-width:0;min-height:46px;font-size:15px;gap:1px}
+  .mobile-bar button span{font-size:9px}
+  .map-hint{display:none}
+}
+@media(max-width:520px){
+  .map-brand{left:9px;right:61px;top:9px;padding:9px 10px;gap:8px}
+  .map-brand .eyebrow{font-size:7px;letter-spacing:.15em}
+  .map-brand h1{font-size:13px}
+  .map-brand .live-status{gap:6px}
+  .map-brand .live-status span{display:none}
+  .floating-search{left:9px;top:67px;height:40px;min-height:40px;padding:0 10px}
+  .floating-search strong{font-size:10px}
+  .floating-search small{font-size:8px}
+  .map-controls{right:8px;top:8px}
+  .map-controls button,.map-controls #toggleUI{width:40px;height:40px;min-height:40px}
+  .directory{
+    left:8px;right:8px;bottom:calc(72px + env(safe-area-inset-bottom));
+    height:min(70dvh,620px);max-height:calc(100dvh - 145px);border-radius:19px;
+  }
+  .directory-head{padding:13px 13px 9px}
+  .directory-head h2{font-size:22px}
+  .count{font-size:9px}
+  .search-box{margin:0 10px 8px;padding:0 10px}
+  .filters{padding-left:10px;padding-right:10px}
+  .quick-tools{padding-left:10px;padding-right:10px}
+  .results{padding-left:6px;padding-right:6px}
+  .result{min-height:53px;padding:7px 8px}
+  .map-tools{left:8px;bottom:calc(74px + env(safe-area-inset-bottom));gap:5px}
+  .map-tools button{height:39px;min-height:39px;padding:0 10px;font-size:10px}
+  .map-tools button span{display:none}
+  .map-footer{left:8px;right:8px;bottom:calc(74px + env(safe-area-inset-bottom));padding:8px 9px;min-height:45px}
+  .map-footer strong{font-size:10px}
+  .map-footer span{font-size:8px}
+  .footer-actions button{height:30px;padding:0 8px}
+  .zoom-indicator{right:8px;bottom:calc(124px + env(safe-area-inset-bottom));padding:7px 9px}
+  .details{left:8px;right:8px;bottom:calc(76px + env(safe-area-inset-bottom));max-height:55dvh}
+}
+@media(max-height:520px) and (max-width:900px){
+  .directory{height:calc(100dvh - 112px);max-height:calc(100dvh - 112px);bottom:calc(64px + env(safe-area-inset-bottom))}
+  .directory-head{padding:9px 12px 6px}
+  .directory-head h2{font-size:19px}
+  .search-box{height:38px;min-height:38px}
+  .filter{height:30px;min-height:30px}
+  .quick-tools button{height:29px;min-height:29px}
+  .result{min-height:44px;padding:5px 8px}
+  .mobile-bar{height:49px;min-height:49px}
+  .map-brand .live-status{display:none}
+}
+@media(prefers-reduced-motion:reduce){
+  .directory,.result,.floating-search,.map-tools button{transition:none!important}
+}
