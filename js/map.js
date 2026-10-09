@@ -173,15 +173,10 @@
   function fitMap(){
     const rect=viewport.getBoundingClientRect();
     if(!rect.width || !rect.height)return;
-    const isMobile=window.matchMedia('(max-width: 900px)').matches;
-    // Fit the whole official plan on desktop. On phones keep it slightly larger
-    // so labels remain readable while still leaving a simple reset-to-fit action.
-    let width=Math.min(rect.width*0.99, rect.height*MAP_ASPECT*0.99);
-    // On phones show the complete plan across the screen instead of cropping its sides.
-    // Users can then pinch/drag to inspect details.
-    if(isMobile) width=Math.min(rect.width*0.99, rect.height*MAP_ASPECT*0.96);
-    width=Math.max(260, width);
-    canvas.style.width=`${Math.round(width)}px`;
+    // Default view fills the entire browser viewport: no empty side/top bars.
+    // The image and marker layer share the same canvas dimensions, keeping markers aligned.
+    canvas.style.width=`${Math.round(rect.width)}px`;
+    canvas.style.height=`${Math.round(rect.height)}px`;
     state.scale=1; state.panX=0; state.panY=0; applyTransform();
   }
 
