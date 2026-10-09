@@ -13,7 +13,9 @@
     scale: 1, panX: 0, panY: 0, dragging: false, pointers: new Map(), lastTap: 0, view3D: false
   };
 
-  const MAP_ASPECT = 2048 / 1449;
+  const MAP_ASPECT = 0.995; // campus-only crop after removing the left legend column
+  const MAP_CROP_START_X = 29.6;
+  const MAP_CROP_WIDTH = 70.4;
   const viewport = $('#viewport');
   const canvas = $('#canvas');
   const markers = $('#markers');
@@ -28,7 +30,7 @@
   const startLabel = $('#startLabel');
 
   const clamp = (v,a,b) => Math.max(a, Math.min(b,v));
-  const mapX = (x) => Number(x) || 0;
+  const mapX = (x) => ((Number(x) - MAP_CROP_START_X) / MAP_CROP_WIDTH) * 100;
   const mapY = (y) => Number(y) || 0;
   const typeLabel = (t) => ({department:'Department',room:'Room',lab:'Laboratory',common:'Campus service'})[t] || 'Location';
   const shortType = (t) => ({department:'D',room:'R',lab:'L',common:'•'})[t] || '•';
@@ -173,11 +175,9 @@
   function fitMap(){
     const rect=viewport.getBoundingClientRect();
     if(!rect.width || !rect.height)return;
-    // Cover the complete browser viewport like the Admin map: preserve the
-    // source image proportions, scale until every edge is covered, and crop only
-    // the excess outside the viewport. Marker coordinates stay aligned to the image.
-    const coverWidth=Math.max(rect.width, rect.height*MAP_ASPECT);
-    canvas.style.width=`${Math.ceil(coverWidth)}px`;
+    // Show only the campus-plan portion (legend removed), keeping the full plan visible.
+    const width=Math.min(rect.width*0.98, rect.height*MAP_ASPECT*0.96);
+    canvas.style.width=`${Math.round(width)}px`;
     canvas.style.height='auto';
     state.scale=1; state.panX=0; state.panY=0; applyTransform();
   }
@@ -210,7 +210,7 @@
     const baseH=canvas.offsetHeight || baseW / MAP_ASPECT;
     state.scale=targetScale;
     // Exact inverse of the centered canvas transform: selected point lands at viewport center.
-    state.panX=-(Number(state.selected.x)/100-.5)*baseW*state.scale;
+    state.panX=-(mapX(state.selected.x)/100-.5)*baseW*state.scale;
     state.panY=-(Number(state.selected.y)/100-.5)*baseH*state.scale;
     // Keep a little breathing room so the selected marker is not hidden under UI.
     if(options.route){
