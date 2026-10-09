@@ -13,9 +13,11 @@
     scale: 1, panX: 0, panY: 0, dragging: false, pointers: new Map(), lastTap: 0, view3D: false
   };
 
-  const MAP_ASPECT = 0.995; // campus-only crop after removing the left legend column
+  const MAP_ASPECT = 1.62; // landscape campus-only crop
   const MAP_CROP_START_X = 29.6;
   const MAP_CROP_WIDTH = 70.4;
+  const MAP_CROP_START_Y = 12.3;
+  const MAP_CROP_HEIGHT = 87.7;
   const viewport = $('#viewport');
   const canvas = $('#canvas');
   const markers = $('#markers');
@@ -31,7 +33,7 @@
 
   const clamp = (v,a,b) => Math.max(a, Math.min(b,v));
   const mapX = (x) => ((Number(x) - MAP_CROP_START_X) / MAP_CROP_WIDTH) * 100;
-  const mapY = (y) => Number(y) || 0;
+  const mapY = (y) => ((Number(y) - MAP_CROP_START_Y) / MAP_CROP_HEIGHT) * 100;
   const typeLabel = (t) => ({department:'Department',room:'Room',lab:'Laboratory',common:'Campus service'})[t] || 'Location';
   const shortType = (t) => ({department:'D',room:'R',lab:'L',common:'•'})[t] || '•';
 
@@ -176,7 +178,7 @@
     const rect=viewport.getBoundingClientRect();
     if(!rect.width || !rect.height)return;
     // Show only the campus-plan portion (legend removed), keeping the full plan visible.
-    const width=Math.min(rect.width*0.98, rect.height*MAP_ASPECT*0.96);
+    const width=Math.min(rect.width*0.98, rect.height*MAP_ASPECT*0.98);
     canvas.style.width=`${Math.round(width)}px`;
     canvas.style.height='auto';
     state.scale=1; state.panX=0; state.panY=0; applyTransform();
