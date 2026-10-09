@@ -218,7 +218,7 @@
     state.scale=targetScale;
     // Exact inverse of the centered canvas transform: selected point lands at viewport center.
     state.panX=-(mapX(state.selected.x)/100-.5)*baseW*state.scale;
-    state.panY=-(Number(state.selected.y)/100-.5)*baseH*state.scale;
+    state.panY=-(mapY(state.selected.y)/100-.5)*baseH*state.scale;
     // Keep a little breathing room so the selected marker is not hidden under UI.
     if(options.route){
       state.panY += isMobile ? 18 : 10;
