@@ -173,10 +173,12 @@
   function fitMap(){
     const rect=viewport.getBoundingClientRect();
     if(!rect.width || !rect.height)return;
-    // Default view fills the entire browser viewport: no empty side/top bars.
-    // The image and marker layer share the same canvas dimensions, keeping markers aligned.
-    canvas.style.width=`${Math.round(rect.width)}px`;
-    canvas.style.height=`${Math.round(rect.height)}px`;
+    // Cover the complete browser viewport like the Admin map: preserve the
+    // source image proportions, scale until every edge is covered, and crop only
+    // the excess outside the viewport. Marker coordinates stay aligned to the image.
+    const coverWidth=Math.max(rect.width, rect.height*MAP_ASPECT);
+    canvas.style.width=`${Math.ceil(coverWidth)}px`;
+    canvas.style.height='auto';
     state.scale=1; state.panX=0; state.panY=0; applyTransform();
   }
 
