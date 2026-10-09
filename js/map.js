@@ -14,10 +14,10 @@
   };
 
   const MAP_ASPECT = 1.62; // landscape campus-only crop
-  const MAP_CROP_START_X = 29.6;
-  const MAP_CROP_WIDTH = 70.4;
-  const MAP_CROP_START_Y = 12.3;
-  const MAP_CROP_HEIGHT = 87.7;
+  const MAP_CROP_START_X = 28.9;
+  const MAP_CROP_WIDTH = 68.7;
+  const MAP_CROP_START_Y = 12.0;
+  const MAP_CROP_HEIGHT = 85.5;
   const viewport = $('#viewport');
   const canvas = $('#canvas');
   const markers = $('#markers');
