@@ -545,3 +545,10 @@ button:focus-visible,input:focus-visible{outline:2px solid #67e8f9;outline-offse
 @media(prefers-reduced-motion:reduce){
   .directory,.result,.floating-search,.map-tools button{transition:none!important}
 }
+
+
+/* Final mobile cleanup: prevent the old desktop footer competing with touch navigation. */
+@media(max-width:900px){
+  .map-footer{display:none}
+  .map-tools{bottom:calc(74px + env(safe-area-inset-bottom))}
+}
