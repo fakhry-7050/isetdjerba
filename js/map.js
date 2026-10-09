@@ -30,6 +30,10 @@
   const startDot = $('#startDot');
   const destinationHalo = $('#destinationHalo');
   const startLabel = $('#startLabel');
+  const zoomIndicator = document.createElement('div');
+  zoomIndicator.className = 'zoom-indicator';
+  zoomIndicator.innerHTML = '<span class="zoom-dot"></span><span>MAP ZOOM</span><strong id="zoomIndicatorValue">100%</strong>';
+  $('#mapShell').appendChild(zoomIndicator);
 
   const clamp = (v,a,b) => Math.max(a, Math.min(b,v));
   const mapX = (x) => ((Number(x) - MAP_CROP_START_X) / MAP_CROP_WIDTH) * 100;
@@ -99,7 +103,7 @@
 
   function renderMarkers(){
     markers.innerHTML = state.locations.map(l => `
-      <button class="marker ${state.selected?.id===l.id?'selected':''}" data-id="${escapeAttr(l.id)}" style="left:${mapX(l.x)}%;top:${mapY(l.y)}%" aria-label="${escapeAttr(l.name)}" title="${escapeAttr(l.name)}">
+      <button class="marker ${escapeAttr(l.type||'location')} ${state.selected?.id===l.id?'selected':''}" data-id="${escapeAttr(l.id)}" style="left:${mapX(l.x)}%;top:${mapY(l.y)}%" aria-label="${escapeAttr(l.name)}" title="${escapeAttr(l.name)}">
         <span>${escapeHtml(l.short || shortType(l.type))}</span>
       </button>`).join('');
     $$('.marker').forEach(m=>m.addEventListener('click',(e)=>{e.stopPropagation();selectById(m.dataset.id,true)}));
@@ -170,6 +174,8 @@
 
   function applyTransform(){
     viewport.classList.toggle('view-3d', !!state.view3D);
+    const zoomValue = document.querySelector('#zoomIndicatorValue');
+    if(zoomValue) zoomValue.textContent = `${Math.round(state.scale * 100)}%`;
     const tilt = state.view3D ? 52 : 0;
     canvas.style.transform=`translate3d(calc(-50% + ${state.panX}px),calc(-50% + ${state.panY}px),0) scale(${state.scale}) rotateX(${tilt}deg)`;
   }
