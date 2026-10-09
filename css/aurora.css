@@ -107,3 +107,54 @@ input::placeholder,textarea::placeholder{color:#71859c!important}
   *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}
   .aurora-reveal{opacity:1;transform:none}
 }
+
+
+/* Contrast repair: make controls inherit the accessible theme instead of browser defaults. */
+body:not(:has(.navigator)) button,
+body:not(:has(.navigator)) input,
+body:not(:has(.navigator)) textarea,
+body:not(:has(.navigator)) select{font-family:inherit}
+body:not(:has(.navigator)) button{color:var(--aurora-text)}
+body:not(:has(.navigator)) .result,
+body:not(:has(.navigator)) .location-row{color:var(--aurora-text)!important;background:transparent}
+body:not(:has(.navigator)) .result:hover,
+body:not(:has(.navigator)) .result.selected,
+body:not(:has(.navigator)) .location-row:hover,
+body:not(:has(.navigator)) .location-row.selected{background:rgba(103,232,249,.11)!important}
+body:not(:has(.navigator)) .result-text b,
+body:not(:has(.navigator)) .location-row b{color:#edf6ff!important}
+body:not(:has(.navigator)) .result-text small,
+body:not(:has(.navigator)) .location-row small,
+body:not(:has(.navigator)) .result-arrow{color:#9aadc2!important}
+body:not(:has(.navigator)) .sidebar-bottom,
+body:not(:has(.navigator)) .chips{border-color:var(--aurora-line)!important}
+body:not(:has(.navigator)) .search kbd{color:#b8c8d9!important;background:rgba(18,35,56,.8);border-color:var(--aurora-line)!important}
+.admin-page .admin-map-tools{background:rgba(7,17,31,.96)!important;border-color:var(--aurora-line)!important}
+.admin-page .admin-map-tools button{background:rgba(103,232,249,.07)!important;color:#dceaf8!important;border-color:var(--aurora-line)!important;opacity:1!important}
+.admin-page .admin-map-tools button.active{background:rgba(103,232,249,.18)!important;color:var(--aurora-cyan)!important;border-color:rgba(103,232,249,.42)!important}
+.admin-page .admin-map-tools button:disabled{opacity:.58!important;color:#a8b8ca!important}
+.admin-page .admin-map-tools button:last-child{color:var(--aurora-coral)!important;border-color:rgba(255,140,120,.3)!important}
+.admin-page .admin-panel-head strong,.admin-page .editor-head h2,.admin-page .admin-heading h1,.admin-page .admin-login h1{color:var(--aurora-text)!important}
+.admin-page .admin-editor label,.admin-page .admin-login-form label,.admin-page .route-editor label{color:#c8d8e8!important}
+.admin-page .admin-editor input,.admin-page .admin-editor textarea,.admin-page .admin-editor select,
+.admin-page .admin-login-form input,.admin-page .admin-table-panel input,
+.admin-page .upload-settings-body input{background:rgba(4,14,26,.82)!important;color:#edf6ff!important;border-color:var(--aurora-line)!important}
+.admin-page .admin-editor input::placeholder,.admin-page .admin-editor textarea::placeholder,
+.admin-page .admin-table-panel input::placeholder{color:#8298ae!important}
+.admin-page .admin-editor input:focus,.admin-page .admin-editor textarea:focus,.admin-page .admin-editor select:focus,
+.admin-page .admin-login-form input:focus{outline:2px solid rgba(103,232,249,.24)!important;border-color:var(--aurora-cyan)!important}
+.admin-page .admin-panel-head small,.admin-page .admin-map-foot,.admin-page .route-editor p,
+.admin-page .field-help,.admin-page .upload-status{color:#9aadc2!important}
+.admin-page .location-row{color:var(--aurora-text)!important}
+.admin-page .location-row b{color:#edf6ff!important}
+.admin-page .location-row small,.admin-page .location-row .row-coords{color:#9aadc2!important}
+.admin-page .location-row:hover,.admin-page .location-row.selected{background:rgba(103,232,249,.11)!important}
+.admin-page .upload-settings-body{background:#0d1b2d!important;border-color:var(--aurora-line)!important}
+.admin-page .upload-settings-body label{color:#c8d8e8!important}
+.admin-page .upload-settings-body summary{background:rgba(103,232,249,.07)!important;color:#edf6ff!important;border-color:var(--aurora-line)!important}
+.admin-page .admin-actions button{color:#dceaf8!important;background:rgba(103,232,249,.06)!important;border-color:var(--aurora-line)!important}
+.admin-page .admin-actions button.danger-button{color:var(--aurora-coral)!important}
+@media(max-width:650px){
+  .admin-page .admin-map-tools{background:rgba(7,17,31,.96)!important}
+  .admin-page .admin-map-tools button{min-height:40px}
+}
