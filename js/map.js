@@ -360,6 +360,13 @@
   $('#refreshData').addEventListener('click',loadData);
   $('#helpBtn').addEventListener('click',()=>$('#helpModal').classList.add('open'));$('#closeHelp').addEventListener('click',()=>$('#helpModal').classList.remove('open'));$('#helpModal').addEventListener('click',e=>{if(e.target.id==='helpModal')e.currentTarget.classList.remove('open')});
   function openDirectory(){$('#directory').classList.add('open');$('#search').focus()}
+  viewport.addEventListener('click',e=>{
+    if(window.matchMedia('(max-width: 900px)').matches &&
+       directory?.classList.contains('open') &&
+       !e.target.closest('.marker')){
+      directory.classList.remove('open');
+    }
+  });
   $('#openDirectory').addEventListener('click',openDirectory);
   $('#closeDirectory').addEventListener('click',()=>$('#directory').classList.remove('open'));
   $('#mobileSearch').addEventListener('click',openDirectory);$('#mobileDirectory').addEventListener('click',openDirectory);$('#mobileFocus').addEventListener('click',()=>focusSelected());$('#mobileRoute').addEventListener('click',()=>toggleRoute());
