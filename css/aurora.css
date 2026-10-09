@@ -4,6 +4,10 @@
   --aurora-line:rgba(172,205,231,.16);--aurora-text:#edf6ff;--aurora-muted:#9aadc2;
   --aurora-cyan:#67e8f9;--aurora-lime:#b8ff54;--aurora-coral:#ff8c78;
   --aurora-shadow:0 24px 70px rgba(0,0,0,.34);
+  /* Keep legacy page components on the same dark palette. */
+  --ink:#edf6ff;--navy:#07111f;--navy2:#0b1728;--paper:#07111f;--cream:#0d1b2d;
+  --line:rgba(172,205,231,.16);--muted:#9aadc2;--blue:#67e8f9;--orange:#ff8c78;--lime:#b8ff54;
+  --shadow:0 24px 70px rgba(0,0,0,.34);
 }
 html{scroll-behavior:smooth;scroll-padding-top:90px}
 body:not(:has(.navigator)){background:var(--aurora-bg)!important;color:var(--aurora-text)!important;position:relative;isolation:isolate}
