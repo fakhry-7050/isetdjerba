@@ -17,7 +17,7 @@ button,a{touch-action:manipulation}
 /* Fill the screen's unused aspect-ratio space with the same campus plan, not black bars. */
 .map-viewport::before{content:none !important}
 .map-viewport.dragging{cursor:grabbing}
-.map-canvas{position:absolute;width:100px;height:auto;aspect-ratio:1.62/1;left:50%;top:50%;transform:translate3d(-50%,-50%,0) scale(1);transform-origin:center center;will-change:transform;contain:layout style}
+.map-canvas{position:absolute;width:100%;height:100%;aspect-ratio:auto;left:50%;top:50%;transform:translate3d(-50%,-50%,0) scale(1);transform-origin:center center;will-change:transform;contain:layout style}
 .map-canvas{overflow:hidden}
 .map-canvas img{position:absolute;left:-47.4%;top:-14%;width:150.4%;height:117%;max-width:none;object-fit:fill;display:block;user-select:none;pointer-events:none;-webkit-user-drag:none}
 .map-overlay{position:absolute;inset:0;width:100%;height:100%;overflow:visible;pointer-events:none}
