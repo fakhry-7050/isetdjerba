@@ -58,11 +58,14 @@
       const payload = await res.json();
       data = payload.record || payload;
     } catch(err) {
-      console.warn(err);
-      try {
-        const res = await fetch('data/campus-data.json', {cache:'no-store'});
-        if(res.ok) data = await res.json();
-      } catch(fallbackErr){ console.warn(fallbackErr); }
+      console.warn('JSONBin campus data unavailable; trying bundled/local data.', err);
+      data = window.ISET_CAMPUS_DATA || null;
+      if(!data && window.location.protocol !== 'file:') {
+        try {
+          const res = await fetch('data/campus-data.json', {cache:'no-store'});
+          if(res.ok) data = await res.json();
+        } catch(fallbackErr){ console.warn('Local JSON fallback failed.', fallbackErr); }
+      }
     }
     if(!data || !Array.isArray(data.locations)) {
       $('#statusText').textContent = 'Data unavailable';
@@ -75,7 +78,7 @@
     state.routesByLocation = data.routesByLocation || {};
     state.routePoints = Array.isArray(data.routePoints) ? data.routePoints : [];
     state.routeSettings = {...state.routeSettings, ...(data.routeSettings || {})};
-    $('#statusText').textContent = `${state.locations.length} locations ready`;
+    $('#statusText').textContent = `${state.locations.length} locations ready${data === window.ISET_CAMPUS_DATA ? ' · local backup' : ''}`;
     renderDirectory(); renderMarkers(); fitMap(); renderRoute();
   }
 
