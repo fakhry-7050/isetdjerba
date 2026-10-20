@@ -1,19 +1,385 @@
-.quiz-page{min-height:100vh;background:var(--paper)}.quiz-page .topbar{position:relative}.back-link{padding:9px 12px;border:1px solid #c7ccca;border-radius:6px;color:var(--ink);font:800 9px 'DM Mono';text-decoration:none}.challenge-main{max-width:1530px;margin:0 auto;padding:68px clamp(22px,7vw,105px) 80px}.challenge-head{display:flex;align-items:end;justify-content:space-between;gap:35px;margin-bottom:33px}.challenge-head h1{margin:16px 0 17px;font:700 clamp(48px,6vw,82px)/.91 'Space Grotesk';letter-spacing:-4.5px}.challenge-head h1 em{font-style:normal;color:var(--blue)}.challenge-copy{max-width:600px;margin:0;color:#677384;font-size:13px;line-height:1.7}.challenge-score{min-width:150px;padding:15px 18px;border-left:4px solid var(--lime);background:var(--ink);color:#fff}.challenge-score span,.challenge-score small{display:block;color:#afbdca;font:8px 'DM Mono';letter-spacing:1px}.challenge-score strong{display:block;margin:5px 0;font:700 43px/.9 'Space Grotesk';color:var(--lime)}.challenge-shell{display:grid;grid-template-columns:390px minmax(0,1fr);min-height:610px;background:var(--navy);box-shadow:0 28px 80px #08111f2e}.challenge-panel{padding:32px;color:white;background:#101e32}.challenge-meta{display:flex;justify-content:space-between;padding-bottom:19px;border-bottom:1px solid #ffffff1c;color:#afbdca;font:8px 'DM Mono';letter-spacing:1px}.challenge-meta b{color:var(--lime)}.challenge-rule{display:flex;gap:10px;margin-top:37px;color:var(--orange);font:800 9px 'DM Mono';letter-spacing:1px}.challenge-rule span:first-child{color:#76859a}.challenge-kicker{margin:28px 0 10px;color:var(--orange);font:800 9px 'DM Mono';letter-spacing:1.5px}.challenge-panel h2{margin:0 0 12px;font:700 35px/1.02 'Space Grotesk';letter-spacing:-1.7px}.challenge-panel>p:not(.challenge-kicker):not(.challenge-feedback){margin:0;color:#adc0d4;font-size:11px;line-height:1.65}.challenge-actions{display:flex;gap:8px;margin-top:28px;flex-wrap:wrap}.challenge-actions button{min-height:43px}.challenge-actions .btn-secondary{border-color:#ffffff30;color:white}.challenge-actions button:disabled{opacity:.4;cursor:not-allowed}.challenge-feedback{min-height:22px;margin:19px 0 0;color:var(--lime);font:800 9px 'DM Mono';line-height:1.5}.challenge-feedback.wrong{color:var(--orange)}.challenge-tip{margin-top:92px;padding-top:17px;border-top:1px solid #ffffff1c}.challenge-tip span{color:#94a4b8;font:8px 'DM Mono';letter-spacing:1px}.challenge-tip p{margin:9px 0 0;color:#94a4b8;font-size:10px;line-height:1.6}.challenge-tip b{color:white}.challenge-map-wrap{min-width:0;display:flex;flex-direction:column;background:#071525}.challenge-map-head,.challenge-map-foot{display:flex;align-items:center;justify-content:space-between;flex:none;padding:0 21px;color:#bdc9d6;font:8px 'DM Mono';letter-spacing:1px}.challenge-map-head{height:54px;border-bottom:1px solid #ffffff12}.challenge-map-head i{display:inline-block;width:7px;height:7px;margin-right:8px;border-radius:50%;background:var(--lime);box-shadow:0 0 0 4px #b9ff4920}.challenge-map-head b{color:var(--lime)}.challenge-map-foot{height:43px;color:#8495a8;border-top:1px solid #ffffff12}.challenge-map-foot a{color:white;text-decoration:none}.challenge-viewport{position:relative;flex:1;min-height:0;overflow:hidden;cursor:grab;touch-action:none;background:#06101c}.challenge-viewport:after{content:'';position:absolute;inset:0;pointer-events:none;background-image:linear-gradient(#ffffff07 1px,transparent 1px),linear-gradient(90deg,#ffffff07 1px,transparent 1px);background-size:35px 35px}.challenge-canvas{position:absolute;left:50%;top:50%;width:min(940px,92%);transform:translate(-50%,-50%);transform-origin:center;transition:transform .15s ease;user-select:none}.challenge-canvas img{display:block;width:100%;height:auto;box-shadow:0 25px 60px #0009}.quiz-marker{position:absolute;z-index:2;transform:translate(-50%,-100%)}.quiz-marker button{width:27px;height:27px;display:grid;place-items:center;border:2px solid white;border-radius:50% 50% 50% 0;background:var(--orange);color:#fff;transform:rotate(-45deg);box-shadow:0 4px 13px #000a;transition:.2s}.quiz-marker button span{transform:rotate(45deg);font:700 7px 'DM Mono'}.quiz-marker em{position:absolute;top:30px;left:50%;padding:4px 6px;transform:translateX(-50%);border-radius:4px;background:#071525ed;color:white;font:8px 'DM Mono';font-style:normal;opacity:0;white-space:nowrap}.quiz-marker:hover button{background:var(--blue);transform:rotate(-45deg) scale(1.25)}.quiz-marker.target button{background:var(--orange);animation:targetPulse 1.35s infinite}.quiz-marker.target em,.quiz-marker.correct em{opacity:1}.quiz-marker.target em{background:var(--orange)}.quiz-marker.correct button{background:#63c978;box-shadow:0 0 0 7px #63c97844,0 4px 13px #000a}.quiz-marker.wrong button{background:#ff3f54;animation:quizShake .35s}.quiz-marker:not(.target):not(.correct){opacity:.92}@keyframes targetPulse{50%{box-shadow:0 0 0 10px #ff725211,0 4px 13px #000a}}@keyframes quizShake{25%{transform:translate(-58%,-100%)}75%{transform:translate(-42%,-100%)}}
-@media(max-width:920px){.challenge-main{padding-top:45px}.challenge-shell{grid-template-columns:1fr}.challenge-panel{min-height:430px}.challenge-tip{margin-top:45px}.challenge-map-wrap{height:560px}}
-@media(max-width:560px){.quiz-page .top-right .live{display:none}.back-link{padding:8px 9px}.challenge-main{padding:38px 16px 55px}.challenge-head{align-items:stretch;flex-direction:column;gap:22px;margin-bottom:23px}.challenge-head h1{font-size:49px;letter-spacing:-3px}.challenge-copy{font-size:12px}.challenge-score{display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:12px;width:100%;padding:12px 14px}.challenge-score strong{margin:0}.challenge-shell{margin:0 -6px;min-height:0}.challenge-panel{padding:23px;min-height:390px}.challenge-panel h2{font-size:29px}.challenge-tip{margin-top:38px}.challenge-map-wrap{height:430px}.challenge-map-head,.challenge-map-foot{padding:0 14px}.challenge-canvas{width:calc(100% - 24px)}}
-.quiz-page .challenge-canvas{overflow:hidden;aspect-ratio:1448 / 1286.1}
-.quiz-page .challenge-canvas img{position:absolute;left:-41.44%;top:-11.73%;width:141.44%;height:111.73%;max-width:none;object-fit:fill}
-.difficulty-picker{margin-top:23px;padding:11px 0;border-top:1px solid #ffffff1c;border-bottom:1px solid #ffffff1c}.difficulty-picker>span{display:block;margin-bottom:8px;color:#8fa0b4;font:8px 'DM Mono';letter-spacing:1px}.difficulty-picker>div{display:flex;gap:5px}.difficulty{padding:6px 9px;border:1px solid #ffffff25;border-radius:5px;background:transparent;color:#9eabbd;font-size:9px;font-weight:800}.difficulty.active{border-color:var(--lime);background:var(--lime);color:var(--ink)}.challenge-timer{display:flex;align-items:center;gap:9px;margin-top:19px;color:#aeb9c8;font:8px 'DM Mono'}.challenge-timer strong{width:25px;color:var(--lime);font:700 17px 'Space Grotesk'}.challenge-timer i{height:4px;flex:1;overflow:hidden;background:#ffffff18;border-radius:4px}.challenge-timer i b{display:block;height:100%;width:100%;background:var(--lime);transform-origin:left;transition:width .3s linear}.challenge-timer.warning strong{color:var(--orange)}.challenge-timer.warning i b{background:var(--orange)}.challenge-score b{display:block;margin-top:7px;color:var(--lime);font:8px 'DM Mono';letter-spacing:1px}.hint-button{min-height:43px;padding:0 10px;border:1px solid #ff725255;border-radius:7px;background:transparent;color:var(--orange);font-size:9px;font-weight:800}.hint-button:disabled{opacity:.35;cursor:not-allowed}.quiz-marker.hint button{background:var(--lime);box-shadow:0 0 0 10px #b9ff4940,0 4px 13px #000a}.quiz-marker.hint em{opacity:1;background:var(--lime);color:var(--ink)}.challenge-panel.celebrate{animation:panelCelebrate .5s ease}@keyframes panelCelebrate{50%{box-shadow:inset 0 0 0 3px var(--lime)}}
-@media(max-width:560px){.difficulty-picker{margin-top:18px}.difficulty{flex:1}.challenge-actions{gap:6px}.hint-button{width:100%}.challenge-score b{margin-top:0}}
-.quiz-page .challenge-canvas.fogged img{filter:blur(4px);transform:scale(1.025)}
-.quiz-page .challenge-canvas.fogged .quiz-marker{filter:none}
-.quiz-page .quiz-marker.quiz-dim{opacity:.12!important;pointer-events:none}
-.quiz-page .quiz-marker.candidate{opacity:1!important}
-.quiz-page .quiz-marker.candidate button{background:var(--blue);box-shadow:0 0 0 5px #5677ff55,0 4px 13px #000a}
-.quiz-page .quiz-marker.candidate em{opacity:1;background:var(--blue)}
-.quiz-page .quiz-marker.candidate span{font-size:0}
-.quiz-page .quiz-marker.candidate span::after{content:'?';font-size:7px}
-.quiz-page .challenge-canvas.masked .quiz-marker span{font-size:0}
-.quiz-page .challenge-canvas.masked .quiz-marker span::after{content:'•';font-size:7px}
-.quiz-page .challenge-canvas.masked .quiz-marker em{font-size:0;min-width:14px;text-align:center}
-.quiz-page .challenge-canvas.masked .quiz-marker em::after{content:'?';font-size:8px}
+/* ISET — Quiz Arcade | Fun, Fast, Jaw Edition | 2026 */
+.quiz-page{
+  min-height:100vh;min-height:100dvh;
+  background:#050A14;color:#EAF2FF;
+  overflow-x:hidden;
+  position:relative;
+}
+.quiz-page::before{
+  content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;
+  background:
+    radial-gradient(ellipse 60% 50% at 15% 20%, rgba(108,243,255,0.12), transparent 60%),
+    radial-gradient(ellipse 50% 40% at 85% 15%, rgba(167,139,250,0.15), transparent 60%),
+    radial-gradient(ellipse 70% 60% at 50% 100%, rgba(214,255,87,0.08), transparent 70%);
+  filter:blur(30px);
+}
+.quiz-page .topbar{
+  position:sticky;top:12px;z-index:50;
+  width:min(1440px, calc(100vw - 24px));margin:0 auto;
+  background:rgba(13,27,45,.88);border:1px solid rgba(179,205,232,.18);border-radius:999px;
+  backdrop-filter:blur(24px) saturate(150%);
+}
+.back-link{
+  height:36px;padding:0 14px;display:inline-flex;align-items:center;
+  background:rgba(255,255,255,.06);border:1px solid rgba(179,205,232,.16);border-radius:999px;
+  color:#edf6ff;font:700 10px ui-monospace,SFMono-Regular,Menlo,monospace;
+  text-decoration:none;transition:all .25s cubic-bezier(.16,1,.3,1);
+}
+.back-link:hover{background:#edf6ff;color:#07111f;transform:translateY(-1px)}
+
+.challenge-main{max-width:1440px;margin:0 auto;padding:88px 20px 80px;position:relative}
+.challenge-head{
+  display:flex;align-items:end;justify-content:space-between;gap:24px;margin-bottom:28px;flex-wrap:wrap;
+  animation:headIn .6s cubic-bezier(.16,1,.3,1) both;
+}
+@keyframes headIn{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+.challenge-head h1{
+  margin:14px 0 12px;
+  font:800 clamp(36px,6vw,64px)/.88 Syne, sans-serif;letter-spacing:-.05em;
+}
+.challenge-head h1 em{
+  font-style:normal;
+  background:linear-gradient(135deg, #67e8f9, #a78bfa, #ff7ac1);
+  -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
+  background-size:200% 200%;animation:gradMove 6s ease infinite;
+}
+@keyframes gradMove{0%,100%{background-position:0% 50%}50%{background-position:100% 50%}}
+.challenge-copy{max-width:520px;margin:0;color:#9aadc2;font-size:14px;line-height:1.6}
+
+.challenge-score{
+  min-width:200px;padding:18px 20px;
+  background:linear-gradient(155deg, rgba(13,27,45,.96), rgba(10,22,38,.92));
+  border:1px solid rgba(179,205,232,.18);border-radius:20px;
+  backdrop-filter:blur(24px);box-shadow:0 20px 60px rgba(0,0,0,.3);
+  position:relative;overflow:hidden;
+  animation:scoreIn .6s .1s cubic-bezier(.16,1,.3,1) both;
+}
+@keyframes scoreIn{from{opacity:0;transform:translateX(16px) scale(.96)}to{opacity:1;transform:translateX(0) scale(1)}}
+.challenge-score::before{
+  content:"";position:absolute;top:0;left:0;right:0;height:2px;
+  background:linear-gradient(90deg, #b8ff54, #67e8f9);
+}
+.challenge-score span,.challenge-score small{display:block;font:700 9px ui-monospace,SFMono-Regular,Menlo,monospace;letter-spacing:.14em;color:#8ea0ba}
+.challenge-score strong{
+  display:block;margin:6px 0;
+  font:800 44px/.9 Syne,sans-serif;color:#b8ff54;
+  text-shadow:0 0 24px rgba(184,255,84,.35);
+  transition:transform .3s cubic-bezier(.16,1,.3,1);
+}
+.challenge-score strong.pop{transform:scale(1.15)}
+.challenge-score small{color:#edf6ff;font-size:11px;margin-top:2px}
+.challenge-score b{
+  display:inline-flex;align-items:center;gap:6px;margin-top:10px;
+  font:800 9px ui-monospace,SFMono-Regular,Menlo,monospace;letter-spacing:.12em;
+  background:rgba(103,232,249,.1);border:1px solid rgba(103,232,249,.18);color:#67e8f9;
+  padding:6px 10px;border-radius:999px;
+  transition:all .3s;
+}
+.challenge-score b.hot{background:rgba(255,122,193,.15);border-color:rgba(255,122,193,.25);color:#ff7ac1;box-shadow:0 0 16px rgba(255,122,193,.2)}
+.challenge-score b.mega{background:linear-gradient(135deg, rgba(184,255,84,.2), rgba(103,232,249,.2));border-color:#b8ff54;color:#b8ff54;box-shadow:0 0 20px rgba(184,255,84,.3);animation:streakPulse 1s ease-in-out infinite}
+@keyframes streakPulse{0%,100%{transform:scale(1)}50%{transform:scale(1.05)}}
+
+.challenge-shell{
+  display:grid;grid-template-columns:380px minmax(0,1fr);
+  min-height:640px;
+  background:linear-gradient(180deg, rgba(13,27,45,.88), rgba(8,18,34,.92));
+  border:1px solid rgba(179,205,232,.18);border-radius:24px;
+  box-shadow:0 28px 80px rgba(0,0,0,.35);backdrop-filter:blur(28px) saturate(140%);
+  overflow:hidden;position:relative;
+  animation:shellIn .7s .15s cubic-bezier(.16,1,.3,1) both;
+}
+@keyframes shellIn{from{opacity:0;transform:translateY(20px) scale(.98)}to{opacity:1;transform:translateY(0) scale(1)}}
+
+.challenge-panel{
+  padding:22px 20px;
+  background:rgba(8,16,30,.6);border-right:1px solid rgba(179,205,232,.12);
+  display:flex;flex-direction:column;min-height:0;position:relative;overflow:hidden;
+}
+.challenge-panel::before{
+  content:"";position:absolute;inset:0;pointer-events:none;opacity:.6;
+  background:radial-gradient(500px circle at 0% 0%, rgba(103,232,249,.06), transparent 50%);
+}
+.challenge-meta{
+  display:flex;justify-content:space-between;align-items:center;
+  padding-bottom:14px;border-bottom:1px solid rgba(179,205,232,.12);
+  font:700 9px ui-monospace,SFMono-Regular,Menlo,monospace;letter-spacing:.12em;color:#8ea0ba;
+  position:relative;z-index:1;
+}
+.challenge-meta b{
+  background:rgba(184,255,84,.12);border:1px solid rgba(184,255,84,.2);color:#b8ff54;
+  padding:5px 10px;border-radius:999px;transition:all .3s;
+}
+.challenge-meta b.correct{background:#b8ff54;color:#07111f;box-shadow:0 0 16px rgba(184,255,84,.4)}
+.challenge-meta b.wrong{background:rgba(255,107,74,.15);border-color:rgba(255,107,74,.25);color:#ff8c78}
+.challenge-rule{
+  display:flex;gap:8px;margin-top:18px;position:relative;z-index:1;
+  font:800 9px ui-monospace,SFMono-Regular,Menlo,monospace;letter-spacing:.14em;color:#8ea0ba;
+}
+.challenge-rule span:first-child{background:rgba(184,255,84,.12);color:#b8ff54;padding:3px 8px;border-radius:999px}
+.challenge-rule span:last-child{color:#67e8f9}
+.difficulty-picker{margin-top:16px;padding:14px 0;border-top:1px solid rgba(179,205,232,.1);border-bottom:1px solid rgba(179,205,232,.1);position:relative;z-index:1}
+.difficulty-picker>span{display:block;margin-bottom:10px;font:700 9px ui-monospace,SFMono-Regular,Menlo,monospace;letter-spacing:.14em;color:#8ea0ba}
+.difficulty-picker>div{display:flex;gap:6px}
+.difficulty{
+  flex:1;height:38px;border-radius:999px;
+  background:rgba(255,255,255,.05);border:1px solid rgba(179,205,232,.16);
+  color:#a9bfd5;font:700 10px ui-monospace,SFMono-Regular,Menlo,monospace;
+  cursor:pointer;transition:all .25s cubic-bezier(.16,1,.3,1);position:relative;overflow:hidden;
+}
+.difficulty::before{
+  content:"";position:absolute;inset:0;background:linear-gradient(135deg, rgba(103,232,249,.15), rgba(167,139,250,.15));
+  opacity:0;transition:opacity .25s;
+}
+.difficulty:hover{transform:translateY(-1px);border-color:rgba(103,232,249,.35);color:#edf6ff}
+.difficulty:hover::before{opacity:1}
+.difficulty.active{background:#edf6ff;border-color:#edf6ff;color:#07111f;box-shadow:0 6px 20px rgba(255,255,255,.15);transform:translateY(-1px)}
+.difficulty.active::before{opacity:0}
+
+.challenge-kicker{
+  margin:18px 0 8px;position:relative;z-index:1;
+  font:800 10px ui-monospace,SFMono-Regular,Menlo,monospace;letter-spacing:.18em;color:#ff8c78;
+  display:flex;align-items:center;gap:8px;
+}
+.challenge-kicker::before{content:"";width:20px;height:2px;background:linear-gradient(90deg, #ff8c78, transparent);display:inline-block}
+.challenge-panel h2{
+  margin:0 0 10px;position:relative;z-index:1;
+  font:800 28px/1.05 Syne,sans-serif;letter-spacing:-.03em;min-height:56px;
+  transition:transform .3s cubic-bezier(.16,1,.3,1);
+}
+.challenge-panel h2.bump{transform:scale(1.02)}
+.challenge-panel>p:not(.challenge-kicker):not(.challenge-feedback){
+  margin:0;position:relative;z-index:1;color:#9aadc2;font-size:12px;line-height:1.6;min-height:36px;
+}
+
+/* Timer - circular + bar */
+.challenge-timer{
+  display:flex;align-items:center;gap:12px;margin-top:16px;padding:12px 14px;position:relative;z-index:1;
+  background:rgba(0,0,0,.28);border:1px solid rgba(179,205,232,.12);border-radius:999px;
+  transition:all .3s;
+}
+.challenge-timer.warning{
+  background:rgba(255,107,74,.08);border-color:rgba(255,107,74,.2);
+  animation:timerShake .5s ease-in-out infinite;
+}
+@keyframes timerShake{0%,100%{transform:translateX(0)}25%{transform:translateX(-1px)}75%{transform:translateX(1px)}}
+.challenge-timer span{font:700 9px ui-monospace,SFMono-Regular,Menlo,monospace;letter-spacing:.12em;color:#8ea0ba}
+.challenge-timer strong{
+  width:42px;height:42px;display:grid;place-items:center;
+  background:rgba(184,255,84,.12);border:1px solid rgba(184,255,84,.2);border-radius:50%;
+  color:#b8ff54;font:800 16px Syne,sans-serif;
+  transition:all .3s;
+}
+.challenge-timer.warning strong{background:rgba(255,107,74,.15);border-color:rgba(255,107,74,.25);color:#ff8c78;box-shadow:0 0 16px rgba(255,107,74,.25)}
+.challenge-timer i{height:8px;flex:1;overflow:hidden;background:rgba(255,255,255,.08);border-radius:999px;position:relative}
+.challenge-timer i b{
+  display:block;height:100%;width:100%;
+  background:linear-gradient(90deg, #b8ff54, #67e8f9);border-radius:999px;
+  transform-origin:left;transition:width .3s linear, background .3s;
+  box-shadow:0 0 12px rgba(184,255,84,.4);position:relative;overflow:hidden;
+}
+.challenge-timer i b::after{
+  content:"";position:absolute;inset:0;
+  background:linear-gradient(90deg, transparent, rgba(255,255,255,.4), transparent);
+  animation:timerShine 1.5s linear infinite;
+}
+@keyframes timerShine{0%{transform:translateX(-100%)}100%{transform:translateX(100%)}}
+.challenge-timer.warning i b{background:linear-gradient(90deg, #ff7252, #ff8c78);box-shadow:0 0 12px rgba(255,107,74,.4)}
+
+.challenge-actions{display:flex;gap:8px;margin-top:18px;flex-wrap:wrap;position:relative;z-index:1}
+.challenge-actions button{
+  min-height:44px;flex:1;min-width:120px;
+  border-radius:999px;font:700 10px ui-monospace,SFMono-Regular,Menlo,monospace;
+  cursor:pointer;transition:all .25s cubic-bezier(.16,1,.3,1);position:relative;overflow:hidden;
+  touch-action:manipulation;
+}
+.challenge-actions .btn-primary{
+  background:#edf6ff;color:#07111f;border:1px solid #edf6ff;
+  box-shadow:0 8px 24px rgba(255,255,255,.12);
+}
+.challenge-actions .btn-primary:hover{transform:translateY(-2px) scale(1.02);box-shadow:0 12px 32px rgba(255,255,255,.18)}
+.challenge-actions .btn-primary:active{transform:translateY(0) scale(.98)}
+.challenge-actions .btn-secondary{
+  background:rgba(255,255,255,.06);border:1px solid rgba(179,205,232,.18);color:#edf6ff;
+}
+.challenge-actions .btn-secondary:hover:not(:disabled){background:rgba(255,255,255,.1);transform:translateY(-1px)}
+.challenge-actions button:disabled{opacity:.35;cursor:not-allowed;transform:none!important}
+.hint-button{
+  min-height:44px;padding:0 14px;flex:0 0 auto;
+  background:rgba(255,107,74,.08);border:1px solid rgba(255,107,74,.2);border-radius:999px;
+  color:#ff8c78;font:700 10px ui-monospace,SFMono-Regular,Menlo,monospace;
+  cursor:pointer;transition:all .25s;
+}
+.hint-button:hover:not(:disabled){background:rgba(255,107,74,.14);transform:translateY(-1px);box-shadow:0 4px 16px rgba(255,107,74,.15)}
+.hint-button:disabled{opacity:.3}
+
+.challenge-feedback{
+  min-height:42px;margin:14px 0 0;padding:12px 14px;position:relative;z-index:1;
+  background:rgba(184,255,84,.08);border:1px solid rgba(184,255,84,.15);border-radius:12px;
+  color:#b8ff54;font:700 10px/1.5 ui-monospace,SFMono-Regular,Menlo,monospace;
+  transition:all .3s cubic-bezier(.16,1,.3,1);
+}
+.challenge-feedback.wrong{background:rgba(255,107,74,.08);border-color:rgba(255,107,74,.15);color:#ff8c78;animation:feedbackShake .4s ease}
+@keyframes feedbackShake{25%{transform:translateX(-3px)}75%{transform:translateX(3px)}}
+.challenge-feedback.correct{background:rgba(184,255,84,.12);border-color:rgba(184,255,84,.25);color:#b8ff54;box-shadow:0 0 20px rgba(184,255,84,.15)}
+.challenge-feedback.mega{background:linear-gradient(135deg, rgba(184,255,84,.15), rgba(103,232,249,.15));border-color:#b8ff54;color:#edf6ff;box-shadow:0 0 24px rgba(184,255,84,.2);animation:feedbackPop .5s cubic-bezier(.16,1,.3,1)}
+@keyframes feedbackPop{0%{transform:scale(.96)}50%{transform:scale(1.03)}100%{transform:scale(1)}}
+
+.challenge-tip{margin-top:auto;padding-top:16px;border-top:1px solid rgba(179,205,232,.1);position:relative;z-index:1}
+.challenge-tip span{font:700 9px ui-monospace,SFMono-Regular,Menlo,monospace;letter-spacing:.14em;color:#8ea0ba}
+.challenge-tip p{margin:8px 0 0;color:#8ea0ba;font-size:11px;line-height:1.6}
+.challenge-tip b{color:#edf6ff;background:rgba(255,255,255,.06);padding:2px 6px;border-radius:5px;font:700 10px ui-monospace,SFMono-Regular,Menlo,monospace}
+
+/* Map */
+.challenge-map-wrap{
+  min-width:0;display:flex;flex-direction:column;
+  background:#07111f;position:relative;overflow:hidden;
+}
+.challenge-map-head,.challenge-map-foot{
+  display:flex;align-items:center;justify-content:space-between;flex:none;
+  padding:0 18px;height:52px;
+  background:rgba(13,27,45,.88);border-bottom:1px solid rgba(179,205,232,.12);
+  font:700 9px ui-monospace,SFMono-Regular,Menlo,monospace;letter-spacing:.12em;color:#8ea0ba;
+  backdrop-filter:blur(16px);z-index:2;
+}
+.challenge-map-head i{width:7px;height:7px;background:#b8ff54;border-radius:50%;display:inline-block;margin-right:8px;box-shadow:0 0 0 4px rgba(184,255,84,.12), 0 0 12px #b8ff54;animation:livePulse 2s infinite;flex-shrink:0}
+@keyframes livePulse{0%,100%{transform:scale(1)}50%{transform:scale(1.2)}}
+.challenge-map-head b{background:rgba(184,255,84,.12);border:1px solid rgba(184,255,84,.2);color:#b8ff54;padding:5px 10px;border-radius:999px}
+.challenge-map-foot{border-top:1px solid rgba(179,205,232,.12);border-bottom:0;height:46px}
+.challenge-map-foot a{color:#edf6ff;text-decoration:none;background:rgba(255,255,255,.06);border:1px solid rgba(179,205,232,.12);padding:6px 12px;border-radius:999px;transition:all .2s}
+.challenge-map-foot a:hover{background:#edf6ff;color:#07111f}
+
+.challenge-viewport{
+  position:relative;flex:1;min-height:0;overflow:hidden;cursor:grab;touch-action:none;
+  background:#0a1629;user-select:none;
+}
+.challenge-viewport::after{
+  content:"";position:absolute;inset:0;pointer-events:none;z-index:1;
+  background-image:linear-gradient(rgba(255,255,255,.02) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.02) 1px, transparent 1px);
+  background-size:32px 32px;
+}
+.challenge-canvas{
+  position:absolute;left:50%;top:50%;width:min(960px,92%);transform:translate(-50%,-50%);
+  transform-origin:center;transition:transform .15s ease;user-select:none;
+  border-radius:16px;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,.5);
+}
+.challenge-canvas img{display:block;width:100%;height:auto}
+
+/* Markers - arcade fun */
+.quiz-marker{
+  position:absolute;z-index:2;transform:translate(-50%,-100%);
+  transition:all .35s cubic-bezier(.16,1,.3,1);animation:markerPop .5s cubic-bezier(.16,1,.3,1) both;
+}
+@keyframes markerPop{from{opacity:0;transform:translate(-50%,-60%) scale(.4)}to{opacity:1;transform:translate(-50%,-100%) scale(1)}}
+.quiz-marker button{
+  width:34px;height:34px;display:grid;place-items:center;
+  border:2px solid #fff;border-radius:50% 50% 50% 0;
+  background:linear-gradient(135deg, #ff8c78, #ff7252);color:#fff;
+  transform:rotate(-45deg);box-shadow:0 0 0 4px rgba(255,114,82,.15), 0 6px 16px rgba(0,0,0,.35);
+  cursor:pointer;transition:all .3s cubic-bezier(.16,1,.3,1);position:relative;overflow:hidden;
+}
+.quiz-marker button::after{
+  content:"";position:absolute;inset:0;background:linear-gradient(135deg, rgba(255,255,255,.25), transparent);
+  opacity:0;transition:opacity .2s;
+}
+.quiz-marker button:hover::after{opacity:1}
+.quiz-marker button span{transform:rotate(45deg);font:800 8px ui-monospace,SFMono-Regular,Menlo,monospace;position:relative;z-index:1}
+.quiz-marker em{
+  position:absolute;top:38px;left:50%;transform:translateX(-50%) translateY(6px);
+  padding:6px 10px;background:rgba(7,17,31,.92);border:1px solid rgba(179,205,232,.18);border-radius:999px;
+  color:#edf6ff;font:700 9px ui-monospace,SFMono-Regular,Menlo,monospace;white-space:nowrap;
+  opacity:0;pointer-events:none;transition:all .3s cubic-bezier(.16,1,.3,1);backdrop-filter:blur(12px);z-index:2;
+}
+.quiz-marker:hover{transform:translate(-50%,-100%) scale(1.18);z-index:10}
+.quiz-marker:hover button{box-shadow:0 0 0 8px rgba(103,232,249,.15), 0 10px 24px rgba(0,0,0,.4);background:linear-gradient(135deg, #67e8f9, #a78bfa)}
+.quiz-marker:hover em{opacity:1;transform:translateX(-50%) translateY(0)}
+.quiz-marker.target{transform:translate(-50%,-100%) scale(1.25);z-index:20}
+.quiz-marker.target button{
+  background:linear-gradient(135deg, #ff8c78, #ff7252);
+  box-shadow:0 0 0 10px rgba(255,114,82,.18), 0 0 32px rgba(255,114,82,.4), 0 8px 20px rgba(0,0,0,.4);
+  animation:targetBounce 1.2s ease-in-out infinite;
+}
+@keyframes targetBounce{0%,100%{transform:rotate(-45deg) scale(1)}50%{transform:rotate(-45deg) scale(1.08)}}
+.quiz-marker.target em{opacity:1;transform:translateX(-50%) translateY(0);background:#ff7252;border-color:#ff7252;color:#fff}
+.quiz-marker.correct button{
+  background:linear-gradient(135deg, #b8ff54, #5cff88);
+  box-shadow:0 0 0 12px rgba(184,255,84,.2), 0 0 36px rgba(184,255,84,.5), 0 8px 20px rgba(0,0,0,.4);
+  animation:correctPop .6s cubic-bezier(.16,1,.3,1);
+}
+@keyframes correctPop{0%{transform:rotate(-45deg) scale(1)}30%{transform:rotate(-45deg) scale(1.35)}60%{transform:rotate(-45deg) scale(.9)}100%{transform:rotate(-45deg) scale(1)}}
+.quiz-marker.wrong button{
+  background:linear-gradient(135deg, #ff3b5c, #ff6b7a);
+  box-shadow:0 0 0 8px rgba(255,59,92,.18), 0 8px 20px rgba(0,0,0,.4);
+  animation:wrongShake .45s ease;
+}
+@keyframes wrongShake{0%,100%{transform:rotate(-45deg) translateX(0)}20%{transform:rotate(-45deg) translateX(-4px)}40%{transform:rotate(-45deg) translateX(4px)}60%{transform:rotate(-45deg) translateX(-3px)}80%{transform:rotate(-45deg) translateX(3px)}}
+.quiz-marker.hint button{
+  background:linear-gradient(135deg, #b8ff54, #d6ff57);
+  box-shadow:0 0 0 14px rgba(184,255,84,.18), 0 0 40px rgba(184,255,84,.45), 0 8px 20px rgba(0,0,0,.4);
+  animation:hintGlow 1.5s ease-in-out infinite;
+}
+@keyframes hintGlow{0%,100%{box-shadow:0 0 0 10px rgba(184,255,84,.15), 0 0 32px rgba(184,255,84,.4)}50%{box-shadow:0 0 0 18px rgba(184,255,84,.08), 0 0 48px rgba(184,255,84,.6)}}
+.quiz-marker.hint em{opacity:1;background:#b8ff54;color:#07111f;border-color:#b8ff54;transform:translateX(-50%) translateY(0)}
+.quiz-marker.candidate{opacity:1!important;z-index:15}
+.quiz-marker.candidate button{background:linear-gradient(135deg, #67e8f9, #a78bfa);box-shadow:0 0 0 8px rgba(103,232,249,.15), 0 8px 20px rgba(0,0,0,.35)}
+.quiz-marker.candidate em{opacity:1;background:rgba(103,232,249,.15);border-color:rgba(103,232,249,.3);color:#67e8f9}
+.quiz-marker.quiz-dim{opacity:.12!important;pointer-events:none;filter:grayscale(1) blur(1px)}
+
+/* Confetti */
+.confetti{
+  position:fixed;width:8px;height:8px;pointer-events:none;z-index:200;
+  animation:confettiFall 1.2s cubic-bezier(.16,1,.3,1) forwards;
+}
+@keyframes confettiFall{
+  0%{transform:translateY(-20px) rotate(0deg) scale(1);opacity:1}
+  100%{transform:translateY(400px) rotate(720deg) scale(0);opacity:0}
+}
+
+/* Shake screen on wrong */
+.shake{animation:screenShake .4s ease}
+@keyframes screenShake{0%,100%{transform:translateX(0)}20%{transform:translateX(-6px)}40%{transform:translateX(6px)}60%{transform:translateX(-4px)}80%{transform:translateX(4px)}}
+
+/* Celebrate */
+.challenge-panel.celebrate{animation:panelCeleb .6s cubic-bezier(.16,1,.3,1)}
+@keyframes panelCeleb{
+  0%{transform:scale(1)}
+  25%{transform:scale(1.02);box-shadow:0 0 0 2px #b8ff54, 0 0 32px rgba(184,255,84,.2)}
+  50%{transform:scale(1.01)}
+  100%{transform:scale(1)}
+}
+
+/* Modes */
+.challenge-canvas.fogged img{filter:blur(8px) saturate(.5) brightness(.7);transform:scale(1.05)}
+.challenge-canvas.fogged .quiz-marker{filter:none}
+.challenge-canvas.masked .quiz-marker span{font-size:0}
+.challenge-canvas.masked .quiz-marker span::after{content:'?';font-size:9px;font-weight:800}
+.challenge-canvas.masked .quiz-marker em{font-size:0;min-width:24px;text-align:center}
+.challenge-canvas.masked .quiz-marker em::after{content:'?';font-size:10px;font-weight:800}
+.challenge-canvas{aspect-ratio:1448 / 1286.1;overflow:hidden}
+.challenge-canvas img{position:absolute;left:-41.44%;top:-11.73%;width:141.44%;height:111.73%;max-width:none;object-fit:fill}
+
+/* Responsive */
+@media(max-width:1024px){
+  .challenge-shell{grid-template-columns:1fr;min-height:auto}
+  .challenge-panel{border-right:0;border-bottom:1px solid rgba(179,205,232,.12)}
+  .challenge-map-wrap{height:560px}
+}
+@media(max-width:640px){
+  .challenge-main{padding:84px 14px 60px}
+  .challenge-head{flex-direction:column;align-items:start;gap:18px;margin-bottom:20px}
+  .challenge-head h1{font-size:40px}
+  .challenge-score{width:100%;display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:12px;padding:16px}
+  .challenge-score strong{margin:0;font-size:36px}
+  .challenge-shell{border-radius:20px;min-height:auto}
+  .challenge-panel{padding:18px 16px}
+  .challenge-panel h2{font-size:24px;min-height:auto}
+  .challenge-map-wrap{height:460px}
+  .challenge-map-head,.challenge-map-foot{padding:0 14px;height:48px}
+  .difficulty{height:40px;font-size:9px}
+  .challenge-actions{flex-direction:column}
+  .challenge-actions button{width:100%}
+}
+
+/* Reduced motion */
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+}

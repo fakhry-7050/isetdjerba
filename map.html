@@ -5,8 +5,23 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#07111f">
 <title>ISET Djerba — Campus Map</title>
-<link rel="stylesheet" href="css/map.css?v=20261009l">
-<link rel="stylesheet" href="css/aurora.css?v=20261009c">
+<link rel="stylesheet" href="css/aurora.css?v=20261010c">
+<link rel="stylesheet" href="css/map.css?v=20261010c">
+<style>
+/* FORCE DARK - override white UI */
+.directory, .floating-search, .map-controls, .map-brand, .search-box, .map-tools button, .zoom-indicator, .details, .mobile-bar, .help-card {
+  background: linear-gradient(155deg, rgba(13,27,45,.96), rgba(10,22,38,.92)) !important;
+  border-color: rgba(179,205,232,.18) !important;
+  color: #edf6ff !important;
+  backdrop-filter: blur(24px) saturate(145%) !important;
+}
+.directory .result, .search-box input, .filter, .quick-tools button { color: #edf6ff !important; }
+.directory .result:hover, .directory .result.selected { background: rgba(103,232,249,.1) !important; }
+.map-controls button { background: transparent !important; color: #d4e6f8 !important; }
+.map-controls { background: rgba(13,27,45,.92) !important; }
+.floating-search { background: rgba(13,27,45,.92) !important; color: #edf6ff !important; }
+.floating-search small { background: rgba(255,255,255,.08) !important; color: #9aadc2 !important; }
+</style>
 <script src="js/jsonbin-config.js"></script>
 <script src="data/campus-data.js"></script>
 </head>
